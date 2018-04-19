@@ -43,7 +43,7 @@
         
       </tr>
     </thead>
-    <!--
+
     <tbody *ngFor="let match of matchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
       <tr>
         <td>{{ match.tags }}</td>
@@ -53,7 +53,7 @@
         <td>{{ match.hits }}</td>
       </tr>
     </tbody>
-    !-->
+
   </table>
 
 
@@ -63,9 +63,9 @@
     <a class="btn btn-default pull-right" routerLink="/addmatch" *ngIf="auth.loggedIn">글쓰기</a>
     <a class="btn btn-default pull-right" routerLink="/login" *ngIf="!auth.loggedIn">글쓰기</a>
   </div>
-  <!--
+
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
-  !-->
+
     
 </div>
 
