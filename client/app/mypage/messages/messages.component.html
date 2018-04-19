@@ -34,6 +34,7 @@
                                                                 <p class="category">Check Receivecd Messages</p>
                                                         </div>
                                                         <div class="content table-responsive table-full-width">
+                                                                <!--
                                                                 <table class="table table-striped">
                                                                         <mat-accordion class="example-headers-align">
                                                                                 <mat-expansion-panel hideToggle="true" *ngFor="let message of receiveMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: p, id: 'p'};">
@@ -54,6 +55,7 @@
                                                                         </mat-accordion> 
                                                                         <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
                                                                 </table>
+                                                                !-->
                                                         </div>
                                                 </div>
                                         </div>
@@ -65,6 +67,7 @@
                                                                         <p class="category">Check Sent Messages</p>
                                                                 </div>
                                                                 <div class="content table-responsive table-full-width">
+                                                                        <!--
                                                                         <table class="table table-striped">
                                                                                 <mat-accordion class="example-headers-align">
                                                                                         <mat-expansion-panel hideToggle="true" *ngFor="let message of sendMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: q, id: 'q'};">
@@ -85,6 +88,7 @@
                                                                                 </mat-accordion> 
                                                                                 <pagination-controls (pageChange)="q = $event" id="q"></pagination-controls>
                                                                         </table>
+                                                                        !-->
                                                                 </div>
                                                         </div>
                                                 </div>
