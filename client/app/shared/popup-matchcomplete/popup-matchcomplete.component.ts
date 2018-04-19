@@ -26,7 +26,8 @@ export class PopupMatchcompleteComponent implements OnInit {
     private router: Router,
     public toast: ToastComponent,
     private messageService: MessageService,
-    private matchService: MatchService) {
+    private matchService: MatchService,
+    public bsModalRef: BsModalRef) {
     
    }
 

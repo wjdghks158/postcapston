@@ -32,7 +32,8 @@ export class PopupSendComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     public toast: ToastComponent,
-    private messageService: MessageService) {
+    private messageService: MessageService,
+    public bsModalRef: BsModalRef) {
     
    }
 

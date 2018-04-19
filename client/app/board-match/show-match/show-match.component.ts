@@ -41,7 +41,6 @@ export class ShowMatchComponent implements OnInit {
   };
   isLoading = true;
 
-  public modalRef: BsModalRef;
 
 
   constructor(private _route: ActivatedRoute, public toast: ToastComponent,
