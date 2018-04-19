@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { MaterialModule } from './shared/modules';
 import { AppRoutingModule } from './app-routing.module';
@@ -108,7 +108,7 @@ import { RegisterOkComponent } from './register-ok/register-ok.component';
     PaginationModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
+   // NgbModule.forRoot(),
     OrderModule,
     MatSliderModule,
     MatExpansionModule,
