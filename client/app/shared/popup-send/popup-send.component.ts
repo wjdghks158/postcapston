@@ -32,8 +32,7 @@ export class PopupSendComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     public toast: ToastComponent,
-    private messageService: MessageService,private bsModalService : BsModalService ,
-    private modalRef: BsModalRef) {
+    private messageService: MessageService) {
     
    }
 
@@ -79,9 +78,6 @@ export class PopupSendComponent implements OnInit {
       },
       error => this.toast.setMessage('email already exists', 'danger')
     );
-
-
-    this.modalRef.hide;
   }
 
 }

@@ -26,8 +26,7 @@ export class PopupMatchcompleteComponent implements OnInit {
     private router: Router,
     public toast: ToastComponent,
     private messageService: MessageService,
-    private matchService: MatchService,
-    private modalRef: BsModalRef) {
+    private matchService: MatchService) {
     
    }
 
@@ -82,9 +81,6 @@ export class PopupMatchcompleteComponent implements OnInit {
       res => {
         this.toast.setMessage('you successfully registered!', 'success');
         this.router.navigate(['/match']);
-        this.modalRef.content.onClose.subscribe(result => {
-          console.log('results', result);
-      });
       },
       error => this.toast.setMessage('email already exists', 'danger')
     );
