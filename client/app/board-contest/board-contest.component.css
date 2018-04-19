@@ -1,0 +1,22 @@
+
+
+.categorytable{
+    margin: 5px;
+    border: 1px solid grey;
+}
+
+.aColor:hover{
+    color: blue;
+    cursor: pointer;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: grey;
+}
+.card-img-top{
+    height: 385.98px !important;
+}

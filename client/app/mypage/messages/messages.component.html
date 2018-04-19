@@ -1,0 +1,98 @@
+<div>
+        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                  <h1>My Page</h1>
+                  <span class="subheading">MyPage..</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        
+        <div id="wrapper" class="toggled">
+    
+                <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                                <app-sidebar></app-sidebar>
+                </div>
+                <!-- /#sidebar-wrapper -->
+        
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                        <div class="container-fluid">
+                                <div class="row">
+                                        <div class="col-md-12">
+                                                <div class="card">
+                                                        <div class="header">
+
+                                                                <h4 class="title">Received Message</h4>
+                                                                <p class="category">Check Receivecd Messages</p>
+                                                        </div>
+                                                        <div class="content table-responsive table-full-width">
+                                                                <table class="table table-striped">
+                                                                        <mat-accordion class="example-headers-align">
+                                                                                <mat-expansion-panel hideToggle="true" *ngFor="let message of receiveMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: p, id: 'p'};">
+                                                                                <mat-expansion-panel-header (click)="read(message)" >
+                                                                                        <mat-panel-title>
+                                                                                        {{ message.title }}
+                                                                                        </mat-panel-title>
+                                                                                        <mat-panel-description>
+                                                                                        {{ message.sender }}
+                                                                                                <mat-icon *ngIf="(message.read_at==null)">chat</mat-icon>
+                                                                                        </mat-panel-description>
+                                                                                </mat-expansion-panel-header>
+                                                                                
+                                                                                <h5> {{ message.contents }} </h5>
+                                                                                
+                                                                                
+                                                                                </mat-expansion-panel>
+                                                                        </mat-accordion> 
+                                                                        <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
+                                                                </table>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                                        <div class="card">
+                                                                <div class="header">
+                                                                        <h4 class="title">Send Message</h4>
+                                                                        <p class="category">Check Sent Messages</p>
+                                                                </div>
+                                                                <div class="content table-responsive table-full-width">
+                                                                        <table class="table table-striped">
+                                                                                <mat-accordion class="example-headers-align">
+                                                                                        <mat-expansion-panel hideToggle="true" *ngFor="let message of sendMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: q, id: 'q'};">
+                                                                                        <mat-expansion-panel-header (click)="read(message)">
+                                                                                                <mat-panel-title>
+                                                                                                {{ message.title }}
+                                                                                                </mat-panel-title>
+                                                                                                <mat-panel-description>
+                                                                                                {{ message.sender }}
+                                                                                                        <mat-icon *ngIf="(message.read_at==null)">chat</mat-icon>
+                                                                                                </mat-panel-description>
+                                                                                        </mat-expansion-panel-header>
+                                                                                        
+                                                                                        <h5> {{ message.content }} </h5>
+                                                                                        
+                                                                                        
+                                                                                        </mat-expansion-panel>
+                                                                                </mat-accordion> 
+                                                                                <pagination-controls (pageChange)="q = $event" id="q"></pagination-controls>
+                                                                        </table>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                </div>
+                        </div>
+                </div>
+        </div> 
+</div>
+    
+
+

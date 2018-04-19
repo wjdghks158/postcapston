@@ -1,0 +1,60 @@
+<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>우리 조원 직접 선택해보세요</h1>
+          <span class="subheading">준비된 공모자의 길</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<app-toast [message]="toast.message"></app-toast>
+<mat-card class="col-md-6 card-center">
+  <mat-card-header>Match Register</mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="registerForm">
+      <mat-form-field>
+        <input matInput name="title" formControlName="title" placeholder="Title" autofocus>
+      </mat-form-field>
+
+      <mat-form-field>
+          <textarea  matInput name="contents" formControlName="contents" placeholder="내용" rows="10" cols="80"></textarea>
+      </mat-form-field>
+
+      <mat-form-field hidden>
+        <input matInput name="writer" formControlName="writer" placeholder="Writer" [(value)]="user.username">
+      </mat-form-field>
+      <mat-form-field hidden>
+        <input matInput name="contest_id" formControlName="contest_id" placeholder="Writer" [(ngModel)]="temp_id">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select formControlName="tags" placeholder="Select Category">
+          <mat-option *ngFor="let category of categorys" [(value)]="category.value">{{ category.value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" name="search_title" formControlName="search_title"  placeholder=" Input Keywords" (keyup.enter)="searchEnter()" />
+        <button mat-button matSuffix mat-icon-button (click)="searchEnter()">
+          <i class="material-icons">search</i>
+        </button>
+      </mat-form-field>
+
+        <mat-list *ngIf="!isSearching">
+          <mat-list-item *ngFor="let contest of contests" (click)="titleClick(contest._id, contest.title)" > {{ contest.title }} </mat-list-item>
+        </mat-list>
+
+      <mat-form-field>
+          <input matInput type="text" placeholder="" disabled [(value)]="contest_title" >
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" type="submit" (click)="register()" [disabled]="!registerForm.valid">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>

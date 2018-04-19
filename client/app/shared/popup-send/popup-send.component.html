@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title">매칭 신청하기</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- <p>{{user | json}}</p> -->
+<div class="modal-body">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="form-group">
+<label for="exampleInputEmail1">제목</label>
+<input type="text" class="form-control" id="exampleInputText" aria-describedby="Username" placeholder="제목" formControlName="title"  >
+</div>
+
+<input type="hidden" class="form-control"  value="{{sender}}"  formControlName="sender"  >
+<input type="hidden" class="form-control"  value="{{receiver}}"  formControlName="receiver"  >
+<input type="hidden" class="form-control"  value="{{matchid}}"  formControlName="matchid"  >
+<div class="form-group">
+<label for="exampleInputPassword1">내용</label>
+<textarea  class="form-control" id="exampleInputPassword1" placeholder="내용" formControlName="contents"  ></textarea>
+</div>
+<button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

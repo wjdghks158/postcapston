@@ -1,0 +1,13 @@
+.container-top{
+    padding-top: 100px;
+}
+.center-block{
+    margin: auto;
+    
+}
+.title_center{
+    margin: auto !important;
+}
+.text-center{
+    text-align: center;
+}

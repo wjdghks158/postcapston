@@ -1,0 +1,63 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Contest Page</h1>
+          <span class="subheading">Introduce Contests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="row categorytable">
+    <div class="col-md-2 col-xs-4" *ngFor="let category of categorys">
+        <a class="aColor" (click)="categorySearch(category.value)"> {{ category.value }} </a>
+    </div>
+</div>
+
+<mat-form-field class="example-form-field col-md-3">
+    <input matInput type="text" placeholder=" Input Keywords" (keyup.enter)="searchEnter()" [(ngModel)]="value"/>
+    <!-- <button mat-button matSuffix mat-icon-button (click)="searchContests()"> -->
+    <button mat-button matSuffix mat-icon-button (click)="searchEnter()">
+      <i class="material-icons">search</i>
+    </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field pull-right col-md-2">
+  <mat-select placeholder="정렬" [(value)]="order">
+    <mat-option value="title">가나다</mat-option>
+    <mat-option value="deadline">남은기간</mat-option>
+    <mat-option value="hits">조회수</mat-option>
+  </mat-select>
+</mat-form-field>
+<hr>
+
+<div class="row" >  
+  <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'">
+    <div class="card h-100">
+
+      <a routerLink='/contest/{{contest._id}}'><img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}"></a>
+
+      <div class="card-body">
+        <h4 class="card-title">
+          <a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a>
+        </h4>
+        <p class="card-text">{{ contest.host }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<hr>
+
+<a class="btn btn-default" routerLink="/addcontest">글쓰기</a>
+
+<a class="btn btn-default" routerLink="/updatecontest">업로드테스트용</a>
+<input class="ui button" type="button" value="매칭요청하기" name=""  (click)="searchContests()" />

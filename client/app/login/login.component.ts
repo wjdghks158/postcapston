@@ -4,6 +4,11 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 import { AuthService, AppGlobals } from '../shared/services';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { UserService } from '../shared/services/user.service';
+
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -23,7 +28,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private appGlobals: AppGlobals,
     private router: Router,
-    public toast: ToastComponent) { }
+    public toast: ToastComponent,
+    private userService: UserService,) { }
 
   ngOnInit() {
     if (this.auth.loggedIn) {
@@ -45,11 +51,27 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.loginForm.value).subscribe(
       res => {
+        console.log(this.auth.currentUser);
+        if(this.auth.currentUser.pages.length > 30){
+          console.log('30개 넘는구나');
+          for( var i = 0 ; i<(this.auth.currentUser.pages.length-20); i++ ) {
+            this.auth.currentUser.pages.shift();
+          }
+          console.log(this.auth.currentUser.pages.length);
+          this.save(this.auth.currentUser);
+        }
+        
         this.router.navigate(['/']);
         this.appGlobals.userInfo = res;
       },
       error => this.toast.setMessage('invalid email or password!', 'danger')
     );
   }
+
+  save(user) {
+    this.userService.editUser(user);
+  }
+
+
 
 }

@@ -1,0 +1,20 @@
+<ul class="sidebar-nav">
+  <li class="sidebar-brand">
+          <a [class.active]="sideMenu === 'mypage' " (click)="setMenu('mypage')" routerLink="/mypage">
+                  MyPage
+          </a>
+  </li>
+  <li>
+          <a [class.active]="sideMenu === 'profile' " (click)="setMenu('profile')" routerLink="/profile">Profile</a>
+  </li>
+  <li>
+          <a [class.active]="sideMenu === 'posts' " (click)="setMenu('posts')" routerLink="/posts">My Posts</a>
+  </li>
+  <li>
+          <a [class.active]="sideMenu === 'selectcontests' " (click)="setMenu('selectcontests')" routerLink="/selectcontests">Selected Contests</a>
+  </li>
+  <li>
+          <a [class.active]="sideMenu === 'messages' " (click)="setMenu('messages')" routerLink="/messages"><span class="notification hidden-sm hidden-xs" *ngIf="(notRead > 0)">{{notRead}}</span>Messages</a>
+  </li>
+  
+</ul>

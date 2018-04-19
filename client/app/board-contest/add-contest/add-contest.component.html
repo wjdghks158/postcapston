@@ -1,0 +1,102 @@
+<!--
+<p>
+  add-contest works!
+</p>
+<h4>Select Files</h4>
+  <input type="file" mat-raised-button name="photos" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+
+  <button type="button" mat-raised-button color="primary"
+                                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                            Upload
+                        </button>
+
+                      
+
+<div highlight>
+  <h3>Add new Item</h3>
+</div>
+<div>
+    <form [formGroup]="createNewItemForm" class="form-group" (ngSubmit)="createNewItem($event)">
+      <label for="item.Name">Item Description</label>
+      <input type="text" class="form-control" formControlName="name" maxlength="25" id="name">
+      <label for="item.Price">Item Price</label>
+      <input type="text" class="form-control"  formControlName="price" maxlength="2" id="price">
+      <label for="item.Image">Item Picture</label>
+      <input type="file" multiple ng2FileSelect [uploader]="uploader" >
+      <button type="submit" class="btn btn-default" [disabled]="!uploader.getNotUploadedItems().length">Submit</button>    
+    </form>    
+    
+</div>
+
+-->
+
+
+
+
+<app-toast [message]="toast.message"></app-toast>
+<mat-card>
+  <mat-card-header>Contest Register</mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="register2()">
+      <mat-form-field>
+        <input matInput name="title" formControlName="title" placeholder="Title" autofocus>
+      </mat-form-field>
+
+      <mat-form-field>
+          <textarea  matInput name="contents" formControlName="contents" placeholder="내용" rows="10" cols="80"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput name="writer" formControlName="writer" placeholder="Writer">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select value="selected" formControlName="tags" placeholder="tags">
+          <mat-option>None</mat-option>
+          <mat-option value="it">it</mat-option>
+          <mat-option value="디자인">디자인</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="host" formControlName="host" placeholder="host" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="person" formControlName="person" placeholder="person" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="field" formControlName="field" placeholder="field" >
+      </mat-form-field>
+      
+      <div ng2FileDrop
+      [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+      (fileOver)="fileOverBase($event)"
+      [uploader]="uploader"
+      class="well my-drop-zone">
+     Drop files here !
+ </div>
+ <br />
+ <h4>Select Files</h4>
+ <input type="file" mat-raised-button name="photos" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+
+
+
+      <button mat-raised-button color="primary" type="submit" >Register</button>
+    </form>
+
+
+    <table class="table">
+      <thead>
+      <tr>
+          <th width="50%">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of uploader.queue">
+          <td><strong>{{ item?.file?.name }}</strong></td>
+      </tr>
+      </tbody>
+  </table>
+
+
+
+  </mat-card-content>
+</mat-card>

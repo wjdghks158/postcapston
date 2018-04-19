@@ -1,0 +1,97 @@
+<header class="masthead" style="background-image: url('assets/img/recommend-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Recommend Page</h1>
+          <span class="subheading">Introduce Contests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<mat-tab-group>
+  <mat-tab label="공모전">
+    <div>
+      <h1 class="my-4 title_center">공모전 추천
+          <small></small>
+      </h1>
+    </div>
+    <div class="row" >  
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'">
+          <div class="card h-100">
+      
+            <a routerLink='/contest/{{contest._id}}'><img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}"></a>
+      
+            <div class="card-body">
+              <h4 class="card-title">
+                <a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a>
+              </h4>
+              <p class="card-text">{{ contest.host }}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </mat-tab>
+
+
+  <mat-tab label="매칭">
+    <div>
+      <h1 class="my-4 title_center">공모전 매칭글
+          <small></small>
+      </h1>
+    </div>
+    <div class="container">
+      <table class="table table-stripted">
+        <thead>
+          <tr>
+            <th [class.active]="order === 'tags'"
+                (click)="setOrder('tags')"
+                class="mdl-data-table__cell--non-numeric">
+                태그<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order === 'title'"
+                (click)="setOrder('title')"
+                class="mdl-data-table__cell--non-numeric">
+                제목<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>    
+            <th [class.active]="order === 'writer'"
+                (click)="setOrder('writer')">
+                작성자<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order === 'created_at'"
+                (click)="setOrder('created_at')">
+                날짜<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order === 'hits'"
+                (click)="setOrder('hits')">
+                조회수<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            
+          </tr>
+        </thead>
+        <tbody *ngFor="let match of resultmatchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+          <tr>
+            <td>{{ match.tags }}</td>
+            <td><a routerLink='/match/{{match._id}}'>{{ match.title }}</a></td>
+            <td>{{ match.writer }}</td>
+            <td>{{ match.created_at | date:'MM-dd' }}</td>
+            <td>{{ match.hits }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      
+        
+    </div>
+
+  </mat-tab>
+</mat-tab-group>
+
+
+
+  
+
+  

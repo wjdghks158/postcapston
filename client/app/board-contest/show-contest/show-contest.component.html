@@ -1,0 +1,127 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Contest Page</h1>
+          <span class="subheading">Introduce Contests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid show-detail">
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <div class="show-detail-title">
+        <h5>{{ contest.title }}</h5>
+      </div>
+      <div class="row show-detail-body">
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}">
+            <div class="card-body">
+              <h5>D-Day 6</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          주최: <hr>
+          상금: <hr>
+          인원: <hr>
+          etc..: <hr>
+        </div>
+        <div class="col-md-4 show-detail-col">
+          
+            <div class="show-detail-icon">
+              <i class="material-icons">visibility</i>
+              <span>{{ contest.hits }}</span>
+            </div>
+            <div class="show-detail-etc">
+              something
+            </div>
+            <!-- <mat-form-field class="show-detail-list">
+              <span>공모전 추천</span>
+              <mat-list *ngFor="let contest of contests; let i = index">
+                <mat-list-item *ngIf="i < 4"><a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a></mat-list-item>
+              </mat-list>
+            </mat-form-field> -->
+            <div class="show-detail-list">
+                <ul class="list-group" *ngFor="let contest of contests; let i = index">
+                    <li class="list-group-item" *ngIf="i<4">
+                        <a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>
+  <hr>
+  <div class="container col-md-8">
+      <div class="show-detail-title">
+        <h5>현재 공모전 매칭글</h5>
+      </div>
+      <table class="table table-stripted">
+        <thead>
+          <tr>
+            <th [class.active]="order === 'tags'"
+                (click)="setOrder('tags')"
+                class="mdl-data-table__cell--non-numeric">
+                태그<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order === 'title'"
+                (click)="setOrder('title')"
+                class="mdl-data-table__cell--non-numeric">
+                제목<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>    
+            <th [class.active]="order === 'writer'"
+                (click)="setOrder('writer')">
+                작성자<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order === 'created_at'"
+                (click)="setOrder('created_at')">
+                날짜<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order === 'hits'"
+                (click)="setOrder('hits')">
+                조회수<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            
+          </tr>
+        </thead>
+        <tbody *ngFor="let match of matchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+          <tr>
+            <td>{{ match.tags }}</td>
+            <td><a routerLink='/match/{{match._id}}'><span *ngIf="match.matchstate == '매칭완료'" class="label label-success">매칭완료</span>{{ match.title }}</a></td>
+            <td>{{ match.writer }}</td>
+            <td>{{ match.created_at | date:'MM-dd' }}</td>
+            <td>{{ match.hits }}</td>
+          </tr>
+        </tbody>
+      </table>
+    
+    
+      
+      <hr>
+      <div>
+        <a class="btn btn-default pull-right" routerLink="/addmatch" *ngIf="auth.loggedIn">글쓰기</a>
+        <a class="btn btn-default pull-right" routerLink="/login" *ngIf="!auth.loggedIn">글쓰기</a>
+      </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      
+        
+    </div>
+    
+    
+</div>
+<hr>

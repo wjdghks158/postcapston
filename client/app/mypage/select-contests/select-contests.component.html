@@ -1,0 +1,58 @@
+<div>
+  <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>My Page</h1>
+            <span class="subheading">MyPage..</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  
+  <div id="wrapper" class="toggled">
+
+          <!-- Sidebar -->
+          <div id="sidebar-wrapper">
+              <app-sidebar></app-sidebar>
+          </div>
+          <!-- /#sidebar-wrapper -->
+  
+          <!-- Page Content -->
+          <div id="page-content-wrapper">
+                  <!-- Page Content -->
+            <div class="container">
+
+              <!-- Page Heading -->
+              <h1 class="my-4">내가 본 공모전
+                <small>다시 보기</small>
+              </h1>
+
+
+
+
+              <div class="row" >  
+                <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'">
+                  <div class="card h-100">
+              
+                    <a routerLink='/contest/{{contest._id}}'><img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}"></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a>
+                      </h4>
+                      <p class="card-text">{{ contest.host }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+          </div>
+  
+      </div>
+
+</div>

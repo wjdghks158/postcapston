@@ -1,0 +1,82 @@
+<div>
+        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                  <h1>My Page</h1>
+                  <span class="subheading">MyPage..</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        
+        <div id="wrapper" class="toggled">
+    
+                <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                                <app-sidebar></app-sidebar>
+                </div>
+                <!-- /#sidebar-wrapper -->
+        
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                        <div class="container-fluid">
+                                
+                                <div class="container">
+                                        <table class="table table-stripted">
+                                        <thead>
+                                        <tr>
+                                        <th [class.active]="order === 'tags'"
+                                                (click)="setOrder('tags')"
+                                                class="mdl-data-table__cell--non-numeric">
+                                                태그<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                        </th>
+                                        <th [class.active]="order === 'title'"
+                                                (click)="setOrder('title')"
+                                                class="mdl-data-table__cell--non-numeric">
+                                                제목<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                        </th>    
+                                        <th [class.active]="order === 'writer'"
+                                                (click)="setOrder('writer')">
+                                                작성자<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                        </th>
+                                        <th [class.active]="order === 'created_at'"
+                                                (click)="setOrder('created_at')">
+                                                날짜<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                        </th>
+                                        <th [class.active]="order === 'hits'"
+                                                (click)="setOrder('hits')">
+                                                조회수<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                        </th>
+                                        
+                                        </tr>
+                                        </thead>
+                                        <tbody *ngFor="let match of matchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+                                        <tr>
+                                        <td>{{ match.tags }}</td>
+                                        <td><a routerLink='/match/{{match._id}}'><span *ngIf="match.matchstate" class="label label-success">매칭완료</span>{{ match.title }}</a></td>
+                                        <td>{{ match.writer }}</td>
+                                        <td>{{ match.created_at | date:'MM-dd' }}</td>
+                                        <td>{{ match.hits }}</td>
+                                        </tr>
+                                        </tbody>
+                                        </table>
+                                
+                                
+                                        
+                                        <hr>
+                                        
+                                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                        
+                                        
+                                </div>        
+                        </div>
+                </div>
+        
+        </div>
+    
+</div>

@@ -9,8 +9,11 @@ export class AuthService {
   loggedIn = false;
   isAdmin = false;
 
-  currentUser = { _id: '', username: '', role: '' };
+  currentUser = { _id: '', username: '', role: '', email: '', age: '', job: '', location: '', phone: '', education: '',
+   major: '', majorGroup: '', introduction: '', preference: {department: ''}, pages:[], kakaoid: '' , skill: '' , interest: '' };
   jwtHelper: JwtHelperService = new JwtHelperService();
+
+
 
   constructor(private userService: UserService,
     private router: Router) {
@@ -36,19 +39,31 @@ export class AuthService {
     localStorage.removeItem('token');
     this.loggedIn = false;
     this.isAdmin = false;
-    this.currentUser = { _id: '', username: '', role: '' };
+    this.currentUser = { _id: '', username: '', role: '', email: '', age: '', job: '', location: '', phone: '', education: '',
+    major: '', majorGroup: '', introduction: '', preference: {department: ''}, pages:[], kakaoid: '' , skill: '' , interest: '' };
     this.router.navigate(['/']);
   }
 
   decodeUserFromToken(token) {
     return this.jwtHelper.decodeToken(token).user;
   }
-
+  
   setCurrentUser(decodedUser) {
     this.loggedIn = true;
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;
     this.currentUser.role = decodedUser.role;
+    this.currentUser.email = decodedUser.email;
+    this.currentUser.age = decodedUser.age;
+    this.currentUser.job = decodedUser.job;
+    this.currentUser.location = decodedUser.location;
+    this.currentUser.phone = decodedUser.phone;
+    this.currentUser.education = decodedUser.education;
+    this.currentUser.major = decodedUser.major;
+    this.currentUser.majorGroup = decodedUser.majorGroup;
+    this.currentUser.introduction = decodedUser.introduction;
+    this.currentUser.preference = decodedUser.preference;
+    this.currentUser.pages = decodedUser.pages;
     decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
     delete decodedUser.role;
   }

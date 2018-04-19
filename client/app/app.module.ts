@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { MaterialModule } from './shared/modules';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +14,13 @@ import {
   UserService, AuthService,
   AuthGuardLogin, AuthGuardAdmin,
   AppGlobals, BaseService,ContestService, MatchService, MessageService,
-  UploadService, RecommendService
+  UploadService, RecommendService, CategoryService
 } from './shared/services';
+
+import { PopupSendComponent } from '../../client/app/shared/popup-send/popup-send.component';
+import { PopupMatchcompleteComponent } from '../../client/app/shared/popup-matchcomplete/popup-matchcomplete.component';
+
+
 
 import { AppComponent } from './app.component';
 import { AttendancesComponent } from './attendances/attendances.component';
@@ -28,6 +34,33 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
 
+import { BoardMatchComponent } from './board-match/board-match.component';
+import { BoardContestComponent } from './board-contest/board-contest.component';
+import { BoardRecommendComponent } from './board-recommend/board-recommend.component';
+import { UpdateMatchComponent } from './board-match/update-match/update-match.component';
+import { ShowMatchComponent } from './board-match/show-match/show-match.component';
+import { AddMatchComponent } from './board-match/add-match/add-match.component';
+import { AddContestComponent } from './board-contest/add-contest/add-contest.component';
+import { ShowContestComponent } from './board-contest/show-contest/show-contest.component';
+import { UpdateContestComponent } from './board-contest/update-contest/update-contest.component';
+
+import { FileUploadModule   } from 'ng2-file-upload/ng2-file-upload';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+//0406
+import { OrderModule } from 'ngx-order-pipe';
+import { MypageComponent } from './mypage/mypage.component';
+import { SearchContestComponent } from './board-contest/search-contest/search-contest.component';
+import { ProfileComponent } from './mypage/profile/profile.component';
+import { SelectContestsComponent } from './mypage/select-contests/select-contests.component';
+import { PostsComponent } from './mypage/posts/posts.component';
+import { MessagesComponent } from './mypage/messages/messages.component';
+import { MatSliderModule, MatExpansionModule, MatListModule, MatTabsModule } from '@angular/material';
+import { SidebarComponent } from './mypage/sidebar/sidebar.component';
+import { RegisterOkComponent } from './register-ok/register-ok.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +73,26 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
     AdminComponent,
     NotFoundComponent,
     EmployeeComponent,
-    AttendanceReportComponent
+    AttendanceReportComponent,
+    BoardMatchComponent,
+    BoardContestComponent,
+    BoardRecommendComponent,
+    UpdateMatchComponent,
+    ShowMatchComponent,
+    AddMatchComponent,
+    AddContestComponent,
+    ShowContestComponent,
+    UpdateContestComponent,
+    PopupSendComponent,
+    MypageComponent,
+    SearchContestComponent,
+    ProfileComponent,
+    SelectContestsComponent,
+    PostsComponent,
+    MessagesComponent,
+    PopupMatchcompleteComponent,
+    SidebarComponent,
+    RegisterOkComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +103,19 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
     JwtModule,
     FormsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
+    OrderModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatListModule,
+    MatTabsModule
+  ],
+  exports: [
+    FileUploadModule,
+    // Shared Modules
+    PopupSendComponent,
+    PopupMatchcompleteComponent
   ],
   providers: [// all are singleton
     AuthService,
@@ -66,8 +130,16 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
     MatchService, 
     MessageService,
     UploadService, 
-    RecommendService
+    RecommendService,
+    PopupSendComponent,
+    CategoryService,
+    PopupMatchcompleteComponent
   ],
+  entryComponents: [
+    // ENTRY POINTS
+    PopupSendComponent,
+    PopupMatchcompleteComponent
+],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

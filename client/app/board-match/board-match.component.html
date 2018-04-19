@@ -1,0 +1,68 @@
+<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>우리 조원 직접 선택해보세요</h1>
+          <h2 class="subheading"> 준비된 공모자의 길</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="container">
+  <table class="table table-stripted">
+    <thead>
+      <tr>
+        <th [class.active]="order === 'tags'"
+            (click)="setOrder('tags')"
+            class="mdl-data-table__cell--non-numeric">
+            태그<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+        </th>
+        <th [class.active]="order === 'title'"
+            (click)="setOrder('title')"
+            class="mdl-data-table__cell--non-numeric">
+            제목<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+        </th>    
+        <th [class.active]="order === 'writer'"
+            (click)="setOrder('writer')">
+            작성자<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+        </th>
+        <th [class.active]="order === 'created_at'"
+            (click)="setOrder('created_at')">
+            날짜<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+        </th>
+        <th [class.active]="order === 'hits'"
+            (click)="setOrder('hits')">
+            조회수<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+        </th>
+        
+      </tr>
+    </thead>
+    <tbody *ngFor="let match of matchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+      <tr>
+        <td>{{ match.tags }}</td>
+        <td><a routerLink='/match/{{match._id}}'><span *ngIf="match.matchstate" class="label label-success">매칭완료</span>{{ match.title }}</a></td>
+        <td>{{ match.writer }}</td>
+        <td>{{ match.created_at | date:'MM-dd' }}</td>
+        <td>{{ match.hits }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  
+  <hr>
+  <div>
+    <a class="btn btn-default pull-right" routerLink="/addmatch" *ngIf="auth.loggedIn">글쓰기</a>
+    <a class="btn btn-default pull-right" routerLink="/login" *ngIf="!auth.loggedIn">글쓰기</a>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  
+    
+</div>
+

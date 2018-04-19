@@ -1,0 +1,40 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Contest Page</h1>
+          <span class="subheading">Introduce Contests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<hr>
+
+<p *ngIf="cate">
+  cate : {{ cate.value }} Searching...
+</p>
+<p *ngIf="keyword">
+  keyword : {{ keyword }} Searching...
+</p>
+
+
+
+<div class="row" >  
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let contest of Scontests">
+      <div class="card h-100">
+  
+      <a routerLink='/contest/{{contest._id}}'><img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}"></a>
+    
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#">{{ contest.title }}</a>
+        </h4>
+        <p class="card-text">{{ contest.host }}</p>
+      </div>
+    </div>
+  </div>

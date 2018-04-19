@@ -1,0 +1,100 @@
+.mini-submenu{
+    display:none;  
+    background-color: rgba(0, 0, 0, 0);  
+    border: 1px solid rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    padding: 9px;  
+    /*position: relative;*/
+    width: 42px;
+  
+  }
+  
+  .mini-submenu:hover{
+    cursor: pointer;
+  }
+  
+  .mini-submenu .icon-bar {
+    border-radius: 1px;
+    display: block;
+    height: 2px;
+    width: 22px;
+    margin-top: 3px;
+  }
+  
+  .mini-submenu .icon-bar {
+    background-color: #000;
+  }
+  
+  #slide-submenu{
+    background: rgba(0, 0, 0, 0.45);
+    display: inline-block;
+    padding: 0 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.Mainpanel{
+    height: 1000px;
+    padding-left: 20px;
+}
+
+.sidebar-list{
+  color: black;
+}
+
+
+$grey-color: #a7a7a7;
+
+.mdl-data-table {
+  width: 95%;
+}
+
+.mdl-layout__header-row iframe {
+  width: 100px;
+}
+.pull-right{
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+thead th {
+  cursor: pointer;
+  margin-right: 15px;
+  margin-left: 15px;
+
+  span {
+    visibility: hidden;
+  }
+
+  &.active {
+    color: #000;
+
+    span {
+      visibility: visible;
+    }
+  }
+}
+
+.short-description {
+  color: $grey-color;
+  font-size: 18px;
+  border-left: solid 5px $grey-color;
+  padding-left: 10px;
+}
+
+.mdl-mini-footer {
+  padding-bottom: 22px;
+  padding-top: 16px;
+}
+
+h5 {
+  font-size: 16px;
+  color: rgba(0,0,0,.54);
+  font-weight: 500;
+  text-transform: uppercase;
+
+  @media (min-width: 480px) {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

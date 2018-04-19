@@ -1,0 +1,12 @@
+
+input.ng-invalid{
+  background-color: #FFC0A4;
+  border: 1px solid #f5593d;
+  color: #f5593d;
+}
+
+.sidebar-list{
+  color: black;
+}
+.form-control.border-input {
+  border: 1px solid white; }
