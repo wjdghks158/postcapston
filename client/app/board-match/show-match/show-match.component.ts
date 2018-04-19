@@ -88,11 +88,11 @@ export class ShowMatchComponent implements OnInit {
 //5. 매칭 상대 고른것이라면 매칭 상태의 userid 들어가고 매칭 상태 매칭완료 뜸
 //6. 매칭 상태 안고르면 매칭 상태 비어있고 매칭 상태 매칭완료 뜸
 //7. html에서 매칭완료된놈 매칭완료 된놈이라고 뜬다.
-openConfirmDialog() {
-  this.modalRef = this.modalService.show(PopupSendComponent);
+matchcomplete() {
+  const modalRef = this.modalService.show(PopupMatchcompleteComponent);
   this.modalRef.content.onClose.subscribe(result => {
-      console.log('results', result);
-  })
+    console.log('results', result);
+});
 }
 
   matchrequest2() {

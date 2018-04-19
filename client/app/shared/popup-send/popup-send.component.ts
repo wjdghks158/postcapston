@@ -81,9 +81,7 @@ export class PopupSendComponent implements OnInit {
     );
 
 
-    this.modalRef.content.onClose.subscribe(result => {
-      console.log('results', result);
-  });
+    this.modalRef.hide;
   }
 
 }
