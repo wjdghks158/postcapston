@@ -12,7 +12,8 @@ import { EmployeeService } from './employee/employee.service';
 import {
   UserService, AuthService,
   AuthGuardLogin, AuthGuardAdmin,
-  AppGlobals, BaseService
+  AppGlobals, BaseService,ContestService, MatchService, MessageService,
+  UploadService, RecommendService
 } from './shared/services';
 
 import { AppComponent } from './app.component';
@@ -60,7 +61,12 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
     UserService,
     EmployeeService,
     AppGlobals,
-    BaseService
+    BaseService,
+    ContestService, 
+    MatchService, 
+    MessageService,
+    UploadService, 
+    RecommendService
   ],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
