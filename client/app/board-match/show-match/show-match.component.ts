@@ -9,6 +9,9 @@ import { BsModalRef } from 'ngx-bootstrap';
 import {PopupSendComponent} from '../../shared/popup-send/popup-send.component'
 import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popup-matchcomplete.component'
 
+
+
+
 @Component({
   selector: 'app-show-match',
   templateUrl: './show-match.component.html',

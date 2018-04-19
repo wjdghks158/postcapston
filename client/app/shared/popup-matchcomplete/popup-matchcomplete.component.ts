@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { BsModalService,  } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MessageService } from '../../shared/services/message.service';
@@ -21,12 +21,13 @@ export class PopupMatchcompleteComponent implements OnInit {
   matchid : string;
   messages = [];
   isLoading = true;
-  constructor(public activeModal: NgbActiveModal, 
+  constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     public toast: ToastComponent,
     private messageService: MessageService,
-    private matchService: MatchService) {
+    private matchService: MatchService,
+    private modalRef: BsModalRef) {
     
    }
 
@@ -81,7 +82,9 @@ export class PopupMatchcompleteComponent implements OnInit {
       res => {
         this.toast.setMessage('you successfully registered!', 'success');
         this.router.navigate(['/match']);
-        this.activeModal.close();
+        this.modalRef.content.onClose.subscribe(result => {
+          console.log('results', result);
+      });
       },
       error => this.toast.setMessage('email already exists', 'danger')
     );

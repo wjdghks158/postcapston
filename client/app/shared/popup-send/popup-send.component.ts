@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MessageService } from '../../shared/services/message.service';
 import { ToastComponent } from '../../shared/toast/toast.component';
+import { BsModalService,  } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap';
 
 
 @Component({
@@ -25,11 +26,14 @@ export class PopupSendComponent implements OnInit {
   contents = new FormControl('', [Validators.required]);
 
 
-  constructor(public activeModal: NgbActiveModal, 
+
+
+  constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     public toast: ToastComponent,
-    private messageService: MessageService) {
+    private messageService: MessageService,private bsModalService : BsModalService ,
+    private modalRef: BsModalRef) {
     
    }
 
@@ -77,7 +81,9 @@ export class PopupSendComponent implements OnInit {
     );
 
 
-    this.activeModal.close();
+    this.modalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+  });
   }
 
 }
