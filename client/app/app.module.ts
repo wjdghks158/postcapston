@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { MaterialModule } from './shared/modules';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +46,6 @@ import { UpdateContestComponent } from './board-contest/update-contest/update-co
 
 import { FileUploadModule   } from 'ng2-file-upload/ng2-file-upload';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { PaginationModule  } from 'ng2-bootstrap';
 
 //0406
 import { OrderModule } from 'ngx-order-pipe';
@@ -105,10 +104,9 @@ import { RegisterOkComponent } from './register-ok/register-ok.component';
     JwtModule,
     FormsModule,
     FormsModule,
-    PaginationModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-   // NgbModule.forRoot(),
+    ModalModule.forRoot(),
     OrderModule,
     MatSliderModule,
     MatExpansionModule,

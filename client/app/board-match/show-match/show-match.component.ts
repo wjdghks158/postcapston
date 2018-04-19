@@ -3,8 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { MatchService } from '../../shared/services/match.service';
 import { AuthService } from '../../shared/services';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+import { BsModalService,  } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap';
 import {PopupSendComponent} from '../../shared/popup-send/popup-send.component'
 import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popup-matchcomplete.component'
 
@@ -35,8 +36,13 @@ export class ShowMatchComponent implements OnInit {
   matchuser: ''
   };
   isLoading = true;
+
+  public modalRef: BsModalRef;
+
+
   constructor(private _route: ActivatedRoute, public toast: ToastComponent,
-    private matchService: MatchService, public auth: AuthService, private modalService: NgbModal) {
+    private matchService: MatchService, public auth: AuthService, private bsModalService : BsModalService ,
+    private modalService: BsModalService) {
 
   }
 
@@ -79,18 +85,22 @@ export class ShowMatchComponent implements OnInit {
 //5. 매칭 상대 고른것이라면 매칭 상태의 userid 들어가고 매칭 상태 매칭완료 뜸
 //6. 매칭 상태 안고르면 매칭 상태 비어있고 매칭 상태 매칭완료 뜸
 //7. html에서 매칭완료된놈 매칭완료 된놈이라고 뜬다.
-
-matchcomplete() {
-  const modalRef = this.modalService.open(PopupMatchcompleteComponent);
-  modalRef.componentInstance.setMessage(this.match._id);
+openConfirmDialog() {
+  this.modalRef = this.modalService.show(PopupSendComponent);
+  this.modalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+  })
 }
 
   matchrequest2() {
 
 
-    const modalRef = this.modalService.open(PopupSendComponent);
+    const modalRef = this.modalService.show(PopupSendComponent);
     //modalRef.componentInstance.setMessage(sender, receiver, match_id);
-    modalRef.componentInstance.setMessage(this.auth.currentUser.username, this.match.writer, this.match._id);
+    this.modalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+  });
+   
   }
 
 }
