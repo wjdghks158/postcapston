@@ -4,8 +4,8 @@ import { ToastComponent } from '../../shared/toast/toast.component';
 import { MatchService } from '../../shared/services/match.service';
 import { AuthService } from '../../shared/services';
 
-import { BsModalService,  } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalService  } from 'ngx-bootstrap/modal';
+import { ModalModule,BsModalRef } from 'ngx-bootstrap';
 import {PopupSendComponent} from '../../shared/popup-send/popup-send.component'
 import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popup-matchcomplete.component'
 
@@ -18,6 +18,7 @@ import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popu
   styleUrls: ['./show-match.component.css']
 })
 export class ShowMatchComponent implements OnInit {
+  bsModalRef: BsModalRef;
   id: string;
   currentUser = { _id: '', username: '', role: '' };
   match = {_id: '',
@@ -89,18 +90,17 @@ export class ShowMatchComponent implements OnInit {
 //6. 매칭 상태 안고르면 매칭 상태 비어있고 매칭 상태 매칭완료 뜸
 //7. html에서 매칭완료된놈 매칭완료 된놈이라고 뜬다.
 matchcomplete() {
-  const modalRef = this.modalService.show(PopupMatchcompleteComponent);
-  this.modalRef.content.onClose.subscribe(result => {
+  this.bsModalRef = this.modalService.show(PopupMatchcompleteComponent);
+  this.bsModalRef.content.onClose.subscribe(result => {
     console.log('results', result);
 });
 }
 
   matchrequest2() {
 
-
-    const modalRef = this.modalService.show(PopupSendComponent);
+    this.bsModalRef = this.modalService.show(PopupSendComponent);
     //modalRef.componentInstance.setMessage(sender, receiver, match_id);
-    this.modalRef.content.onClose.subscribe(result => {
+    this.bsModalRef.content.onClose.subscribe(result => {
       console.log('results', result);
   });
    
