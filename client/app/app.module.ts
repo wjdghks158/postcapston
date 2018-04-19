@@ -96,6 +96,7 @@ import { RegisterOkComponent } from './register-ok/register-ok.component';
     RegisterOkComponent
   ],
   imports: [
+    FileUploadModule,
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
