@@ -46,6 +46,7 @@ import { UpdateContestComponent } from './board-contest/update-contest/update-co
 
 import { FileUploadModule   } from 'ng2-file-upload/ng2-file-upload';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PaginationModule  } from 'ng2-bootstrap';
 
 //0406
 import { OrderModule } from 'ngx-order-pipe';
@@ -103,6 +104,8 @@ import { RegisterOkComponent } from './register-ok/register-ok.component';
     JwtModule,
     FormsModule,
     FormsModule,
+    PaginationModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
     OrderModule,
