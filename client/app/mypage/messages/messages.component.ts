@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services';
 import { MessageService } from '../../shared/services/message.service';
-
+import { OrderPipe } from 'ngx-order-pipe';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
