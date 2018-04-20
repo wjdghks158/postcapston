@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
   user = {};
   ngOnInit() {
 
-    this.getUser();
+    if(this.auth.loggedIn) {
+      this.getUser();
+    }
 
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
@@ -41,7 +43,7 @@ export class AppComponent implements OnInit {
         // this.role = this.appGlobals.userInfo.role;
       });
     // this.role = 'guest';
-    this.getReceiveMessage();
+    //this.getReceiveMessage();
 
   }
 

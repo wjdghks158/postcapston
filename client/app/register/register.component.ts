@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../shared/services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { AuthService, AppGlobals } from '../shared/services';
+
+
+
 
 @Component({
   selector: 'app-register',
@@ -10,7 +14,6 @@ import { ToastComponent } from '../shared/toast/toast.component';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm: FormGroup;
   username = new FormControl('', [Validators.required,
   Validators.minLength(2),
@@ -22,12 +25,14 @@ export class RegisterComponent implements OnInit {
   password = new FormControl('', [Validators.required,
   Validators.minLength(6)]);
 
-  role = new FormControl('', [Validators.required]);
+  role = new FormControl('');
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     public toast: ToastComponent,
-    private userService: UserService) { }
+    private userService: UserService,
+    private auth: AuthService,
+    private appGlobals: AppGlobals) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -51,10 +56,29 @@ export class RegisterComponent implements OnInit {
   register() {
     this.userService.register(this.registerForm.value).subscribe(
       res => {
-        this.toast.setMessage('you successfully registered!', 'success');
-        this.router.navigate(['/login']);
+        this.login();
+        console.log("aaaaaa");
       },
-      error => this.toast.setMessage('email already exists', 'danger')
+      error => this.toast.setMessage('Something already exists', 'danger')
     );
   }
+
+  login() {
+    var loginForm = this.formBuilder.group({
+      email: this.email,
+      password: this.password
+    });
+
+    this.auth.login(loginForm.value).subscribe(
+      res => {
+        this.router.navigate(['/registerok']);
+
+        this.appGlobals.userInfo = res;
+        this.toast.setMessage('가입을 축하드립니다.!', 'success');
+      },
+      error => this.toast.setMessage('invalid email or password!', 'danger')
+    );
+  }
+
+
 }
