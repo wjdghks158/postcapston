@@ -80,6 +80,7 @@ export class PopupMatchcompleteComponent implements OnInit {
 
      this.matchService.editByMatchId(this.matchid, this.registerForm.value).subscribe(
       res => {
+        this.bsModalRef.hide();
         this.toast.setMessage('you successfully registered!', 'success');
         this.router.navigate(['/match']);
       },

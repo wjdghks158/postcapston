@@ -58,6 +58,7 @@ import { MessagesComponent } from './mypage/messages/messages.component';
 import { MatSliderModule, MatExpansionModule, MatListModule, MatTabsModule } from '@angular/material';
 import { SidebarComponent } from './mypage/sidebar/sidebar.component';
 import { RegisterOkComponent } from './register-ok/register-ok.component';
+import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-recommend.component';
 
 
 
@@ -92,7 +93,8 @@ import { RegisterOkComponent } from './register-ok/register-ok.component';
     MessagesComponent,
     PopupMatchcompleteComponent,
     SidebarComponent,
-    RegisterOkComponent
+    RegisterOkComponent,
+    RankRecommendComponent
   ],
   imports: [
     FileUploadModule,

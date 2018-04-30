@@ -35,6 +35,9 @@ import { ProfileComponent } from './mypage/profile/profile.component';
 import { SelectContestsComponent } from './mypage/select-contests/select-contests.component';
 import { RegisterOkComponent } from './register-ok/register-ok.component';
 
+import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-recommend.component';
+
+
 const routes: Routes = [
   { path: '', component: AboutComponent },
   { path: 'attendances', component: AttendancesComponent },
@@ -49,6 +52,7 @@ const routes: Routes = [
   { path: 'match', component: BoardMatchComponent },
   { path: 'match/:id', component: ShowMatchComponent, data: {inStock: false} },
   { path: 'recommend', component: BoardRecommendComponent },
+  { path: 'rankrecommend', component: RankRecommendComponent},
   { path: 'contest', component: BoardContestComponent },
   { path: 'contest/:id', component: ShowContestComponent, data: {inStock: false} },
   { path: 'search', component: SearchContestComponent },

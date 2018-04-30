@@ -63,14 +63,9 @@ export class PopupSendComponent implements OnInit {
 
 //여기에 메시지 보내는 코드 있어야 한다.
   onSubmit(){
-    console.log('test:'+ this.matchid+"aaaaaaaa");
-    console.log('test:'+this.receiver);
-    console.log('test:'+this.sender);
-
-
-    console.log(this.registerForm.value);
     this.messageService.sendMessage(this.registerForm.value).subscribe(
       res => {
+        this.bsModalRef.hide();
         this.toast.setMessage('you successfully registered!', 'success');
         this.registerForm.value.code = "2";
         console.log(this.registerForm.value.code);
