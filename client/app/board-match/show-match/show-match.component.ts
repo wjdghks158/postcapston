@@ -41,7 +41,21 @@ export class ShowMatchComponent implements OnInit {
   };
   isLoading = true;
 
-
+  items: string[] = [
+    'The first choice!',
+    'And another choice for you.',
+    'but wait! A third!'
+  ];
+ 
+  onHidden(): void {
+    console.log('Dropdown is hidden');
+  }
+  onShown(): void {
+    console.log('Dropdown is shown');
+  }
+  isOpenChange(): void {
+    console.log('Dropdown state is changed');
+  }
 
   constructor(private _route: ActivatedRoute, public toast: ToastComponent,
     private matchService: MatchService, public auth: AuthService, private bsModalService : BsModalService ,
