@@ -3,6 +3,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
+
 
 import { MaterialModule } from './shared/modules';
 import { AppRoutingModule } from './app-routing.module';
@@ -113,7 +115,8 @@ import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-re
     MatSliderModule,
     MatExpansionModule,
     MatListModule,
-    MatTabsModule
+    MatTabsModule,
+    BsDropdownModule.forRoot()
   ],
   exports: [
     FileUploadModule,
