@@ -108,7 +108,6 @@
                                                           <br>
                                                           <!-- <input type="text" name="education" [(ngModel)]="user.education" class="form-control" placeholder="대졸" >
                                                            -->
-                                                           <div class="row">
                                                             <div class="col-xs-12 col-12 col-sm-6 mb-3">
                                                               <p>Default behavior: dropdown closes after outside click or pressing ESC</p>
                                                               <div class="btn-group" dropdown>
@@ -124,7 +123,7 @@
                                                                 </ul>
                                                               </div>
                                                             </div>
-                                                            
+
                                                           <div ngbDropdown class="d-inline-block dropdown">
                                                               <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle *ngIf="user.education == '';else otherEducation" >학력</a>
                                                               <ng-template #otherEducation><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle> {{user.education}} </a></ng-template>
