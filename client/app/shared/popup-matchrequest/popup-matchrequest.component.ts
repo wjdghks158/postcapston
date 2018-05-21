@@ -10,6 +10,8 @@ import { BsModalRef } from 'ngx-bootstrap';
 })
 export class PopupMatchrequestComponent implements OnInit {
   public message: Message;
+  public title: string;
+  public contents: string;
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
