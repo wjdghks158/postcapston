@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { BaseService } from '../shared/services';
+import { BaseService } from '../shared/services/base.service';
 
 @Injectable()
 export class EmployeeService {
