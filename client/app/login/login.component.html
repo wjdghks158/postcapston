@@ -1,32 +1,60 @@
-<header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="page-heading">
-          <h1>Login Page</h1>
-          <span class="subheading">Login</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
 
+ <app-toast [message]="toast.message"></app-toast>
 
-<app-toast [message]="toast.message"></app-toast>
-<mat-card>
-  <mat-card-header>Login</mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <mat-form-field>
-        <input matInput type="email" name="email" formControlName="email" placeholder="Email" autofocus>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="password" name="password" formControlName="password" placeholder="Password">
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+ 
+ <div class="container set-margin">
+   <div class="row">
+   <div class="col-md-6 col-md-offset-3 panel-center">
+     <div class="panel panel-login">
+       <div class="panel-heading">
+         <div class="row">
+           <div class="col-md-6">
+             <a class="active" id="login-form-link" routerLink="/login">Login</a>
+           </div>
+           <div class="col-md-6">
+             <a id="register-form-link" routerLink="/register">Register</a>
+           </div>
+         </div>
+         <hr>
+       </div>
+       <div class="panel-body">
+         <div class="row">
+           <div class="col-lg-12">
+             <form id="login-form" [formGroup]="loginForm" (ngSubmit)="login()" role="form" style="display: block;">
+               <div class="form-group">
+                 <label> Email</label>
+                 <input type="email" name="email" tabindex="1" class="form-control" placeholder="Email" formControlName="email" autofocus>
+               </div>
+               <div class="form-group">
+                 <label> Password</label>
+                 <input type="password" name="password" tabindex="2" class="form-control" placeholder="Password" formControlName="password">
+               </div>
+               <!-- <div class="form-group text-center">
+                 <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                 <label for="remember"> Remember Me</label>
+               </div> -->
+               <div class="form-group">
+                 <div class="row">
+                   <div class="col-sm-6 col-sm-offset-3 set-loginbutton-margin">
+                     <input type="submit" name="login-submit" tabindex="3" [disabled]="!loginForm.valid" class="form-control btn btn-login" value="LogIn">
+                   </div>
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="row">
+                   <div class="col-lg-12">
+                     <div class="text-center">
+                       <a tabindex="4" class="forgot-password">Forgot Password?</a>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </form>
+   
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>

@@ -1,0 +1,6 @@
+.close{
+    margin: auto;
+}
+.modal-header .close {
+    padding: 0rem !important;
+}

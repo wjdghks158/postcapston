@@ -15,9 +15,9 @@ import { ToastComponent } from '../../shared/toast/toast.component';
 })
 export class PopupMatchcompleteComponent implements OnInit {
   registerForm: FormGroup;
-
+  mybsModalRef: BsModalRef;
   matchuser = new FormControl('', [Validators.required]);
-
+  name : string;
   matchid : string;
   messages = [];
   isLoading = true;
@@ -28,22 +28,27 @@ export class PopupMatchcompleteComponent implements OnInit {
     private messageService: MessageService,
     private matchService: MatchService,
     public bsModalRef: BsModalRef) {
-    
+      this.mybsModalRef = bsModalRef;
+
+   //this.matchid = this.route.snapshot.params['id'];
+   this.getMessage();
+
+   this.registerForm = this.formBuilder.group({
+     matchstate: true,
+     matchuser: this.matchuser
+   });
+
    }
 
   ngOnInit() {
-    this.getMessage();
-
-    this.registerForm = this.formBuilder.group({
-      matchstate: true,
-      matchuser: this.matchuser
-    });
+    console.log(this.name);
+ 
 
 
   }
 //작성자에게 매칭 신청한 메시지 모두 찍음
   getMessage() {
-    this.messageService.getMesssages(this.matchid).subscribe(
+    this.messageService.getMesssages(this.matchService.currentMatchId).subscribe(
       data => {
         console.log(data);
         for( var i=0; i<data.length; i++) {

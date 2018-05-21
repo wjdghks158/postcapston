@@ -1,37 +1,95 @@
-<div>
-        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="page-heading">
-                  <h1>My Page</h1>
-                  <span class="subheading">MyPage..</span>
+
+
+<hr>
+
+<section style="background:#fff; padding: 1.5rem 0;">
+    <div class="container">
+        <div class="row">
+            <div class="board">
+                <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+                <div class="board-inner">
+                    <ul class="nav nav-tabs" id="myTab" style="height: 109px;">
+                        <div class="liner"></div>
+                        <li [class.active]="mypage==='profile'">
+                            <a href="#home" data-toggle="tab" matTooltip="프로필 수정" (click)="mypageTab('profile')">
+                                <span class="round-tabs one">
+                                    <i class="material-icons">
+                                        fingerprint
+                                    </i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li [class.active]="mypage==='chatlist'">
+                            <a class="fa-stack has-badge" data-count="!" href="#profile" data-toggle="tab" (click)="mypageTab('chatlist')" matTooltip="채팅리스트">
+                                <span class="round-tabs two">
+                                    <i class="material-icons">
+                                        forum
+                                    </i>
+                                </span>
+
+                            </a>
+                        </li>
+                        <li [class.active]="mypage==='messages'">
+                            <a class="fa-stack has-badge" data-count="3" href="#messages" data-toggle="tab" matTooltip="매칭 요청 확인" (click)="mypageTab('messages')">
+                                <span class="round-tabs three">
+                                    <i class="material-icons">
+                                        email
+                                    </i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li [class.active]="mypage==='posts'">
+                            <a href="#settings" data-toggle="tab" matTooltip="내가 쓴 글, 댓글" (click)="mypageTab('posts')">
+                                <span class="round-tabs four">
+                                    <i class="material-icons">
+                                        create
+                                    </i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li [class.active]="mypage==='select'">
+                            <a href="#doner" data-toggle="tab" matTooltip="봤던 공모전 다시보기" (click)="mypageTab('select')">
+                                <span class="round-tabs five">
+                                    <i class="material-icons">
+                                        save
+                                    </i>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
-              </div>
-            </div>
-          </div>
-        </header>
-        
-        
-        <div id="wrapper" class="toggled">
-    
-                <!-- Sidebar -->
-                <div id="sidebar-wrapper">
-                        <app-sidebar></app-sidebar>
-                </div>
-                <!-- /#sidebar-wrapper -->
-        
-                <!-- Page Content -->
-                <div id="page-content-wrapper">
-                    <div class="container-fluid">
-                            <h4>
-                                    MyPage.
-                            </h4>            
+
+                <div class="tab-content">
+                    <div class="tab-pane fade in active show" id="home">
+                        
+                            <div class="row justify-content-md-center">
+                                <div class="col-md-8">
+                                    <app-profile></app-profile>
+                                </div>
+                            </div>
+                        
+
                     </div>
+                    <div class="tab-pane fade" id="profile">
+
+                    </div>
+                    <div class="tab-pane fade" id="messages">
+                        <app-messages></app-messages>
+                    </div>
+                    <div class="tab-pane fade" id="settings">
+                        <app-posts></app-posts>
+                    </div>
+                    <div class="tab-pane fade" id="doner">
+                        <app-select-contests></app-select-contests>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-        
+
             </div>
-    
+        </div>
     </div>
-            
+</section>

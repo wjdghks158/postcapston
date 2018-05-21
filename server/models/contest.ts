@@ -19,6 +19,7 @@ const contestSchema = new mongoose.Schema({
     tags: {type: String, 'default': ''}, // tag 이름
     url : {type: String, 'default': ''}, //사이트 url
     url_img: {type: String, 'default': ''}, // 그림 url
+    url_img2: {type: String, 'default': ''}, // 그림 url
     
     created_at: {type: Date, index: {unique: false}, 'default': Date.now}, // 글 생성 시간
     updated_at: {type: Date, index: {unique: false}, 'default': Date.now}  // 글 수정 시간

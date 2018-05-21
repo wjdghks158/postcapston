@@ -34,35 +34,42 @@ export class PopupSendComponent implements OnInit {
     public toast: ToastComponent,
     private messageService: MessageService,
     public bsModalRef: BsModalRef) {
-    
+
+      //console.log(this.bsModalRef.content);
    }
 
 
    ngOnInit() {
-
-    this.registerForm = this.formBuilder.group({
-      receiver: this.receiver,
-      sender: this.sender,
-      code: "1",
-      matchid: this.matchid,
-      title: this.title,
-      contents: this.contents
-    });
-
+ //this.sender = sen.v;
+ this.registerForm = this.formBuilder.group({
+  receiver: this.receiver,
+  sender: this.sender,
+  code: "1",
+  matchid: this.matchid,
+  title: this.title,
+  contents: this.contents
+});
   }
+
   setMessage(sender, receiver, match_id) {
 
-    this.matchid = match_id;
-    this.receiver = receiver;
-    this.sender  = sender;
-    
-    //this.sender = sen.v;
+    this.registerForm.value.receiver = this.receiver;
+    this.registerForm.value.sender = this.sender;
+    this.registerForm.value.matchid = this.matchid;
 
     
+   
+
+      
   }
 
 //여기에 메시지 보내는 코드 있어야 한다.
   onSubmit(){
+    console.log("send test!!!!!!!!!!!");
+    console.log(this.sender);
+    this.setMessage(this.sender,this.receiver,this.matchid);
+
+    console.log(this.receiver);
     this.messageService.sendMessage(this.registerForm.value).subscribe(
       res => {
         this.bsModalRef.hide();

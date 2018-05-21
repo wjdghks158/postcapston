@@ -16,6 +16,7 @@ import { MatchService, AuthService } from '../../shared/services';
 export class PostsComponent implements OnInit {
   matchs = [];
   isLoading = true;
+  comments : any;
 
   created_at = new Date();
 
@@ -35,6 +36,7 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.getMatchsWriter();
+    this.getComments();
   }
 
   setOrder(value: string){
@@ -56,6 +58,27 @@ export class PostsComponent implements OnInit {
       () => {
         this.isLoading = false;
         console.log(Object.keys(this.matchs).length);
+      }
+    );
+  }
+
+  getComments() {
+    console.log("getCommentsgetCommentsgetCommentsgetCommentsgetCommentsgetComments");
+    var url ='/api/searchmatchs';
+    var comments = "comments";
+    this.matchService.search(url+"?"+comments+"="+this.auth.currentUser.username).subscribe(
+      data => {
+        let asd : any;
+        
+        this.comments = data;
+     
+     
+      },
+      error => console.log(error),
+      () => {
+        this.isLoading = false;
+        console.log("박박정환박정환박정환박정환박정환박정환박정환박정환박정환박정환박정환박정환정환");
+        console.log(this.comments);
       }
     );
   }

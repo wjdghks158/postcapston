@@ -1,6 +1,7 @@
 import { MessageService } from './../../shared/services/message.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { AuthService, UserService } from '../../shared/services';
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +9,8 @@ import { AuthService, UserService } from '../../shared/services';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  sideMenu: string = 'mypage';
+  @Input() sideMenu: string = 'mypage';
+
 
   isLoading = true;
   notRead: number;

@@ -1,86 +1,80 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" routerLink="">공모야</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                MENU
-                <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="">Home</a>
-                    </li>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/registerok">RegisterOK</a>
-                    </li>
-                    !-->
 
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/contest">Contest</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/match">Match</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/recommend" *ngIf="auth.loggedIn">Recommend</a>
-                        <a class="nav-link" routerLink="/rankrecommend" *ngIf="!auth.loggedIn">Recommend</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/login" *ngIf="!auth.loggedIn">Login</a>
-                        <a class="nav-link" routerLink="/mypage" *ngIf="auth.loggedIn"><span class="notification hidden-sm hidden-xs" *ngIf="(notRead > 0)">{{notRead}}</span>MyPage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/register" *ngIf="!auth.loggedIn">Register</a>
-                        <a class="nav-link" routerLink="/logout" *ngIf="auth.loggedIn">Logout</a>
-                    </li>
-                </ul>
+<app-loading [condition]="isLoading"></app-loading>
+<mat-sidenav-container class="example-container" *ngIf="!isLoading">
+    <mat-sidenav #sidenav mode="side" position="end" [(opened)]="opened" onfocusout="closelist()">
+            <div class="modal-header">
+                    <h5 class="modal-title text-center">채팅 리스트</h5>
+                    <button type="button" class="close" aria-label="Close" (click)="sidenavToggle()" >
+                    <span aria-hidden="true">&times;</span>
+                    </button>
             </div>
-        </div>
-    </nav>
-    
-    <router-outlet></router-outlet>
-</div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; POST</p>
+    <!-- <ul class="ul-padding Csidebar-nav"  >
+            <li  *ngFor="let chatroom of chatRoomService.chatRooms">
+                <a  (click)="goChatRoom(chatroom._id)" >{{chatroom.username}}</a>
+            </li>
+    </ul> -->
+    <div class="row" *ngFor="let chatroom of chatRoomService.chatRooms">
+      <div>
+          <span class="col-xs-9 chatlist" (click)="goChatRoom(chatroom._id)">
+              {{chatroom.username}}  
+            </span>
+
+ 
+      </div>
+
+      </div>
+
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+            <div class="container-fluid">
+                    
+                     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase navbar-shrink" id="mainNav">
+                        <div class="container">
+                          <a class="navbar-brand js-scroll-trigger" routerLink="">공모야</a>
+                          <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            Menu
+                            <i class="fa fa-bars"></i>
+                          </button>
+                          <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+                              <li class="nav-item mx-0 mx-lg-1">
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/contest">공모전</a>
+                              </li>
+                              <li class="nav-item mx-0 mx-lg-1">
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/match">매칭</a>
+                              </li>
+                              <li class="nav-item mx-0 mx-lg-1">
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/recommend" *ngIf="auth.loggedIn">추천</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/login" *ngIf="!auth.loggedIn" placement="bottom" >추천</a>
+                              </li>
+                              <li class="nav-item mx-0 mx-lg-1">
+                                  <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/login" *ngIf="!auth.loggedIn">로그인</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/mypage" *ngIf="auth.loggedIn"><span class="notification hidden-sm hidden-xs" *ngIf="(notRead > 0)">{{notRead}}</span>마이페이지</a>
+                              </li>
+                              <li class="nav-item mx-0 mx-lg-1">
+                                  <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/register" *ngIf="!auth.loggedIn">회원가입</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/logout" *ngIf="auth.loggedIn">로그아웃</a>
+                              </li>
+                              <li class="nav-item mx-0 mx-lg-1">
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" (click)="chatRoomListClick()" *ngIf="auth.loggedIn" ><i class="material-icons" *ngIf="auth.loggedIn" ></i>채팅</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </nav>
+                      <div class="_blank">.</div>
+                    <router-outlet></router-outlet>
                 </div>
-            </div>
-        </div>
-    </footer>
-    
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<app-chatwindow (chatclose)="chatboxstate()" [changechat]="changechat()" *ngIf="openchat" style="float: right; margin-right: 600px;"></app-chatwindow>
 
+<div class="copyright py-4 text-center text-white">
+  <div class="container">
+    <small>Copyright &copy; POST</small>
+  </div>
+</div>
 
     

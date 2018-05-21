@@ -1,16 +1,23 @@
+import { PopupMatchrequestComponent } from './../../shared/popup-matchrequest/popup-matchrequest.component';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services';
 import { MessageService } from '../../shared/services/message.service';
-import { OrderPipe } from 'ngx-order-pipe';
+import { BsModalService  } from 'ngx-bootstrap/modal';
+import { ModalModule,BsModalRef } from 'ngx-bootstrap';
+
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
   sendMessages = [];
   receiveMessages = [];
   isLoading = true;
+
+  bsModalRef: BsModalRef;
+
 
   //Pipe
   order: string = 'created_at';
@@ -22,7 +29,8 @@ export class MessagesComponent implements OnInit {
   total: number;
 
   constructor(public auth: AuthService,
-  private messageService :MessageService) {
+  private messageService :MessageService,
+  private modalService: BsModalService) {
     
    }
 
@@ -39,20 +47,36 @@ export class MessagesComponent implements OnInit {
       error => console.log(error),
       () => console.log("json :: "+ message.json())
     );
-
     
   }
+
+  openMessage(message){
+    message.read_at = new Date();
+    console.log(message);
+    
+    this.messageService.editMessage(message).subscribe(
+      error => console.log(error),
+      () => console.log("json :: "+ message.json())
+    );
+    
+    this.bsModalRef = this.modalService.show(PopupMatchrequestComponent);
+    this.bsModalRef.content.title = message.title;
+    this.bsModalRef.content.contents = message.contents;
+  }
+
+
+
   getSendMessage() {
     var url ='/api/searchmessages';
     var sender = "sender";
     this.messageService.search(url+"?"+sender+"="+this.auth.currentUser.username).subscribe(
       data => {
-        console.log(data);
+
         for( var i=0; i<data.length; i++) {
           if(data[i].code == "2") { //발신함
-            console.log("test" + data.length);
+
             this.sendMessages.push(data[i]);
-            console.log(this.sendMessages[0].title);
+
           }
         }
        // this.messages = data
@@ -60,8 +84,7 @@ export class MessagesComponent implements OnInit {
       error => console.log(error),
       () => {
         this.isLoading = false;
-        console.log(Object.keys(this.sendMessages).length);
-        console.log(this.sendMessages);
+
       }
     );
   }
@@ -70,12 +93,10 @@ export class MessagesComponent implements OnInit {
     var receiver = "receiver";
     this.messageService.search(url+"?"+receiver+"="+this.auth.currentUser.username).subscribe(
       data => {
-        console.log(data);
+
         for( var i=0; i<data.length; i++) {
           if(data[i].code == "1") { //수신함
-            console.log("test" + data.length);
             this.receiveMessages.push(data[i]);
-            console.log(this.receiveMessages[0].title);
           }
         }
        // this.messages = data
@@ -83,8 +104,7 @@ export class MessagesComponent implements OnInit {
       error => console.log(error),
       () => {
         this.isLoading = false;
-        console.log(Object.keys(this.receiveMessages).length);
-        console.log(this.receiveMessages);
+
       }
     );
   }

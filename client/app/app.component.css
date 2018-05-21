@@ -1,0 +1,33 @@
+
+.bg-secondary {
+    background-color: white !important;
+}
+.fixed-top{
+    position: fixed;
+}
+._blank{
+    height: 107px;
+}
+.modal-header .close {
+    padding: 0 !important;
+    margin: o !important;
+}
+
+.nav-link{
+    font-weight: bold !important;
+}
+.navbar-brand{
+    font-weight: bold !important;
+}
+
+.chatlist{
+    height: 33px;
+    text-align: center;
+    border-bottom: 1.5px grey solid;
+    width: 200px;
+}
+.chatlist:hover{
+    background: #69f0bc;
+    cursor: pointer;
+    font-weight: bold;
+}

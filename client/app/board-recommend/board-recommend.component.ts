@@ -207,8 +207,7 @@ total: number;
 
 
         if(String(this.auth.currentUser.majorGroup).indexOf("공대") > -1) {
-          console.log("여긴 공대임");
-          console.log(String(this.matchs[i].tags[0]));
+
           score += 1;
           if ( String(this.matchs[i].tags[0]).indexOf("공학") > -1 ) {
             console.log("들어오냐");
@@ -224,10 +223,10 @@ total: number;
 
 
         if(String(this.auth.currentUser.majorGroup).indexOf("예대") > -1 ) {
-          console.log("여긴 예대임");
+
           score += 1;
           if ( String(this.matchs[i].tags[0]).indexOf("디자인") > -1  ) {
-            console.log("디자인");
+
           score += 1;
           for( var k=0; k<this.y_keyward.length; k++) {
             if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {
@@ -236,7 +235,7 @@ total: number;
           }
         }
         else if ( String(this.matchs[i].tags[0]).indexOf("기획") > -1 ) {
-          console.log("기획");
+
           score += 1;
           for( var k=0; k<this.y_keyward.length; k++) {
             if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1) {
@@ -245,7 +244,7 @@ total: number;
           }
         }
         else if ( String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 ) {
-          console.log("아이디어");
+
           score += 1;
           for( var k=0; k<this.y_keyward.length; k++) {
             if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {

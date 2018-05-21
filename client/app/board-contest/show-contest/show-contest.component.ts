@@ -13,7 +13,8 @@ import { UserService } from '../../shared/services/user.service';
 export class ShowContestComponent implements OnInit {
 
   userpages = { _id: '', contestid: '' };
-
+  currentDate = new Date();
+  interval;
 
   //추천 공모전
   contests = [];
@@ -46,7 +47,7 @@ export class ShowContestComponent implements OnInit {
     tags: '', // tag 이름
     url : '', //사이트 url
     url_img: '', // 그림 url
-    
+    url_img2: '', // 그림 url
     created_at: '', // 글 생성 시간
     updated_at: ''  // 글 수정 시간
   };
@@ -74,7 +75,10 @@ export class ShowContestComponent implements OnInit {
     this.categorySearch();
     this.userpages._id = this.auth.currentUser._id;
     this.userpages.contestid = this.id;
-    this.addUserPages(this.userpages); //줘야할 변수는 contestID 값이랑 auth id 값
+    if(this.auth.loggedIn) {
+      this.addUserPages(this.userpages); //줘야할 변수는 contestID 값이랑 auth id 값
+    }
+
   }
 
   getContest(id) {
@@ -85,6 +89,14 @@ export class ShowContestComponent implements OnInit {
         this.isLoading = false;
         console.log(this.contest.tags);
         this.selectedCategory = (this.contest.tags).split(",",1);
+        console.log("실험중");
+        if(this.contest.url_img2 == null) {
+          console.log("비었군요");
+        }
+        if(this.contest.url_img2 != null) {
+          console.log(this.contest.url_img2);
+        }
+        console.log(this.contest.url_img2);
         console.log(this.selectedCategory[0]);
       }
     );

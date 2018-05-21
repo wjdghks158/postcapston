@@ -20,3 +20,14 @@ a:hover{
 .card-img-top{
     height: 385.98px !important;
 }
+
+.button-width{
+    background: #c4c1c1;
+    width: 100%;
+    color: black;
+    margin: auto;
+}
+
+._blank{
+    height: 92px;
+}

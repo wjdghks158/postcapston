@@ -1,58 +1,103 @@
+<app-loading [condition]="isLoading"></app-loading>
 <div>
-  <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>My Page</h1>
-            <span class="subheading">MyPage..</span>
+
+  <div class="container">
+
+    <h1 class="my-4">내가 본 공모전
+      <small>다시 보기</small>
+    </h1>
+
+
+
+
+    <!-- <div class="row">
+      <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'">
+        <div class="card h-100">
+
+          <a routerLink='/contest/{{contest._id}}'>
+            <img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a>
+            </h5>
+
           </div>
         </div>
       </div>
     </div>
-  </header>
-  
-  
-  <div id="wrapper" class="toggled">
+ -->
 
-          <!-- Sidebar -->
-          <div id="sidebar-wrapper">
-              <app-sidebar></app-sidebar>
-          </div>
-          <!-- /#sidebar-wrapper -->
-  
-          <!-- Page Content -->
-          <div id="page-content-wrapper">
-                  <!-- Page Content -->
-            <div class="container">
+ <div class="typography-line">
 
-              <!-- Page Heading -->
-              <h1 class="my-4">내가 본 공모전
-                <small>다시 보기</small>
-              </h1>
+  <blockquote class="blockquote" *ngIf="!nonSelect">
+    <div class="row">
+      <div class="col-xs-12  col-sm-6 col-md-3" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'; let i = index"
+      style="margin: 7px 0; border-bottom: 1px #dee2e6 solid;">
+        <a routerLink="/contest/{{contest._id}}">
+        <img src="http://localhost:3000/{{contest.url_img}}" style="height: 273px; width:200px" class="img-thumbnail img-responsive" alt="Rounded Image">
+        </a>
+        <div class="panel-footer">
+          <small>
+            {{ contest.title }}
+          </small>
+        </div>
+      </div>
+    </div>
+  </blockquote>
+  <div *ngIf="nonSelect" style="margin: auto; text-align: center;">
+    <h1>
+      보았던 공모전이 없습니다.
+    </h1>
+    <button mat-button matSuffix class="arrow" routerLink="/posts" routerLink="/contest">
+      <i class="material-icons">
+        subdirectory_arrow_right
+      </i>공모전 보러가기
+
+    </button>
+  </div>
+</div>
 
 
+    <hr>
 
 
-              <div class="row" >  
-                <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'">
-                  <div class="card h-100">
-              
-                    <a routerLink='/contest/{{contest._id}}'><img class="card-img-top" src="http://localhost:3000/{{contest.url_img}}"></a>
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        <a routerLink='/contest/{{contest._id}}'>{{ contest.title }}</a>
-                      </h4>
-                      <p class="card-text">{{ contest.host }}</p>
-                    </div>
+      <!-- <div class="typography-line">
+        <h3>
+          <span class="note" style="padding-left: 100px;">내가 찾아봤던 공모전</span>
+      </h3>
+        <blockquote class="blockquote">
+          <div class="row">
+            <div *ngIf="!nonSelect">
+              <div class="col-xs-12  col-sm-6 col-md-3" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'; let i = index"
+                style="margin: 7px 0; border-bottom: 1px #dee2e6 solid;">
+                <div *ngIf="i<8">
+                  <a>
+                    <img src="http://localhost:3000/{{contest.url_img}}" style="height: 273px;" class="img-thumbnail img-responsive" alt="Rounded Image">
+                  </a>
+                  <div class="panel-footer">
+                    <small style="overflow: auto;">
+                      {{ contest.title }}
+                    </small>
                   </div>
                 </div>
               </div>
+            </div>
+            <div *ngIf="nonSelect" style="margin: auto;">
+              <h1>
+                보았던 공모전이 없습니다.
+              </h1>
+              <button mat-button matSuffix class="arrow" routerLink="/posts" routerLink="/contest">
+                <i class="material-icons">
+                  subdirectory_arrow_right
+                </i>공모전 보러가기
 
-
+              </button>
+            </div>
           </div>
-  
-      </div>
+        </blockquote>
+      </div> -->
 
+
+  </div>
 </div>

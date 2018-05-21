@@ -1,4 +1,4 @@
-<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+<!-- <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -10,41 +10,84 @@
       </div>
     </div>
   </div>
-</header>
+</header> -->
 
 
 <app-toast [message]="toast.message"></app-toast>
-<mat-card>
-  <mat-card-header>Register</mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="registerForm" (ngSubmit)="register()">
-      <mat-form-field>
-        <input matInput name="username" formControlName="username" placeholder="Username" autofocus>
-      </mat-form-field>
+<!-- <div class="col-md-7 card-center">
+  <mat-card>
+    <mat-card-header>Register</mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <mat-form-field>
+          <input matInput name="username" formControlName="username" placeholder="Username" autofocus>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput type="email" name="email" formControlName="email" placeholder="Email">
-      </mat-form-field>
+        <mat-form-field>
+          <input matInput type="email" name="email" formControlName="email" placeholder="Email">
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput type="password" name="password" formControlName="password" placeholder="Password">
-      </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" name="password" formControlName="password" placeholder="Password">
+        </mat-form-field>
 
-      <!-- Check
-      <section class="example-section">
-        <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
-        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
-      </section> -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+      
+        
+      </form>
+    </mat-card-content>
 
-      <!-- <mat-form-field>
-        <mat-select [(value)]="selected" formControlName="role" placeholder="Role">
-          <mat-option>None</mat-option>
-          <mat-option value="hr">HR</mat-option>
-          <mat-option value="admin">Admin</mat-option>
-        </mat-select>
-      </mat-form-field> -->
+  </mat-card>
+</div> -->
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+<div class="container set-margin">
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel-center">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-6">
+              <a id="login-form-link" routerLink="/login">Login</a>
+            </div>
+            <div class="col-md-6">
+              <a class="active" id="register-form-link" routerLink="/register">Register</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <h3 class="title">Welcome</h3>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="register-form" [formGroup]="registerForm" (ngSubmit)="register()" role="form" style="display: block;">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" name="username" formControlName="username" tabindex="1" class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" formControlName="email" tabindex="1" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" name="password" formControlName="password" tabindex="2" class="form-control">
+                </div>
+                <!-- <div class="form-group">
+                  <label>Confirm-password</label>
+                  <input type="password" name="confirm-password" tabindex="2" class="form-control">
+                </div> -->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 set-loginbutton-margin">
+                      <input type="submit" [disabled]="!registerForm.valid" tabindex="4" class="form-control btn btn-register" value="Register">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

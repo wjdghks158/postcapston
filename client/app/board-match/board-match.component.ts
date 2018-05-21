@@ -11,7 +11,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class BoardMatchComponent implements OnInit {
   matchs = [];
   isLoading = true;
-
+  value = '';
   //Pipe
   order: string = 'created_at';
   reverse: boolean = true;
@@ -49,6 +49,25 @@ export class BoardMatchComponent implements OnInit {
 
     this.order = value;
   }
+
+  searchEnter(){
+    //this.router.navigate(["/search/keyword?" + this.value]);
+    var url ='/api/searchmatchs';
+    
+    var a = "title";
+    console.log('searchContests 들어오는거 맡죠');
+    this.matchService.search(url+"?"+a+"="+this.value).subscribe(
+      data => this.matchs = data,
+      error => console.log(error),
+      () => {
+        this.isLoading = false;
+        console.log(Object.keys(this.matchs).length);
+        //this.router.navigate(["/search/keyword?" + this.value]);
+      }
+    );
+  }
+
+
 
   
 

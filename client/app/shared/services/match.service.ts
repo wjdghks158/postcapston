@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MatchService extends BaseService {
+  currentMatchId : string;
 
  // private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
   //private options = new RequestOptions({ headers: this.headers });
@@ -22,6 +23,8 @@ export class MatchService extends BaseService {
   getMatch(id): Observable<any> {
     return this.http.get(`/api/match/${id}`).map(res => res.json());
   }
+
+ 
   
   getsearch(search): Observable<any> {
     console.log(search);
@@ -33,6 +36,10 @@ export class MatchService extends BaseService {
 
   addMatch(match): Observable<any> {
     return this.http.post('/api/match', JSON.stringify(match), this.options);
+  }
+
+  addComments(matchid,comment): Observable<any> {
+    return this.http.put( `/api/comment/${matchid}`, JSON.stringify(comment), this.options);
   }
 
   getUser(match): Observable<any> {

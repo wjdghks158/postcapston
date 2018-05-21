@@ -3,7 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 import { MaterialModule } from './shared/modules';
@@ -61,6 +61,9 @@ import { MatSliderModule, MatExpansionModule, MatListModule, MatTabsModule } fro
 import { SidebarComponent } from './mypage/sidebar/sidebar.component';
 import { RegisterOkComponent } from './register-ok/register-ok.component';
 import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-recommend.component';
+import { PopupMatchrequestComponent } from './popup-matchrequest/popup-matchrequest.component';
+import { ChatboxComponent } from './chatbox/chatbox.component';
+import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 
 
 
@@ -96,7 +99,10 @@ import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-re
     PopupMatchcompleteComponent,
     SidebarComponent,
     RegisterOkComponent,
-    RankRecommendComponent
+    RankRecommendComponent,
+    PopupMatchrequestComponent,
+    ChatboxComponent,
+    ChatwindowComponent
   ],
   imports: [
     FileUploadModule,

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router  } from '@angular/router';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { MatchService } from '../../shared/services/match.service';
+import { ChatRoomService } from '../../shared/services/chat-room.service';
 import { AuthService } from '../../shared/services';
 
 import { BsModalService  } from 'ngx-bootstrap/modal';
 import { ModalModule,BsModalRef } from 'ngx-bootstrap';
 import {PopupSendComponent} from '../../shared/popup-send/popup-send.component'
 import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popup-matchcomplete.component'
-
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 
@@ -18,6 +19,12 @@ import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popu
   styleUrls: ['./show-match.component.css']
 })
 export class ShowMatchComponent implements OnInit {
+
+  registerForm: FormGroup;
+  contents = new FormControl('', [Validators.required]);
+
+
+
   bsModalRef: BsModalRef;
   id: string;
   currentUser = { _id: '', username: '', role: '' };
@@ -41,12 +48,13 @@ export class ShowMatchComponent implements OnInit {
   };
   isLoading = true;
 
-  items: string[] = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
- 
+  chatroom={
+    username : [],
+    messagesCount: 0,
+    newMessagesCount: 0,
+    messages: []
+  }
+
   onHidden(): void {
     console.log('Dropdown is hidden');
   }
@@ -57,15 +65,62 @@ export class ShowMatchComponent implements OnInit {
     console.log('Dropdown state is changed');
   }
 
-  constructor(private _route: ActivatedRoute, public toast: ToastComponent,
-    private matchService: MatchService, public auth: AuthService, private bsModalService : BsModalService ,
-    private modalService: BsModalService) {
+
+  goChat() {
+    this.chatroom.username =[];
+    this.chatroom.username.push(this.auth.currentUser.username);
+    this.chatroom.username.push(this.match.writer);
+    console.log("ㅎㅇ");
+    
+    this.chatRoomService.createRoom(this.chatroom).subscribe(
+      res => {
+        this.router.navigate(['/']);
+        let roominfo = res.json();
+        console.log(roominfo);
+        console.log("chatRoomServicechatRoomServicechatRoomServicechatRoomService");
+        this.chatRoomService.setCurrentChatRoomId(roominfo._id);
+        this.chatRoomService.joinRoom(roominfo._id,this.auth.currentUser.username);
+        this.router.navigate(['/chatbox/'+roominfo._id]);
+      },
+      error => this.toast.setMessage('email already exists', 'danger')
+    );
+  }
+
+  onSubmit() {
+    console.log(this.match);
+    console.log(this.registerForm.value);
+    //this.match.comments.push(this.registerForm.value)
+
+    this.matchService.addComments(this.match._id,this.registerForm.value).subscribe(
+      res => {
+        this.toast.setMessage('you successfully registered!', 'success');
+        this.router.navigate(['/match']);
+      },
+      error => this.toast.setMessage('email already exists', 'danger')
+    );
+
+
+  }
+
+
+
+  constructor(private formBuilder: FormBuilder, private _route: ActivatedRoute, public toast: ToastComponent,
+    private matchService: MatchService, public auth: AuthService,
+    private chatRoomService: ChatRoomService,
+    private router: Router, private modalService: BsModalService) {
 
   }
 
   ngOnInit() {
     this.id = this._route.snapshot.params['id'];
     this.getMatch(this.id);
+
+    this.registerForm = this.formBuilder.group({
+      contents: this.contents,
+      writer: this.auth.currentUser.username,
+
+    });
+
 
   }
 
@@ -80,13 +135,7 @@ export class ShowMatchComponent implements OnInit {
     );
   }
  // 아이디 값으로 나의 id 값 그리고 매칭 게시판 올린 친구한테 메시지 가야함
-  matchrequest() {
-    console.log('매칭 요청 들어옴');
-    console.log(this.match);
-    console.log(this.auth);
-    
-    
-  }
+
 //매칭 완료, 매칭 진행중, 매칭 공모 완료
 
 //매칭 완료, 매칭 진행중, 매칭 공모 완료
@@ -102,20 +151,25 @@ export class ShowMatchComponent implements OnInit {
 //5. 매칭 상대 고른것이라면 매칭 상태의 userid 들어가고 매칭 상태 매칭완료 뜸
 //6. 매칭 상태 안고르면 매칭 상태 비어있고 매칭 상태 매칭완료 뜸
 //7. html에서 매칭완료된놈 매칭완료 된놈이라고 뜬다.
-matchcomplete() {
+matchComplete() {
+  this.matchService.currentMatchId = this.match._id;
   this.bsModalRef = this.modalService.show(PopupMatchcompleteComponent);
-  this.bsModalRef.content.onClose.subscribe(result => {
-    console.log('results', result);
-});
+  this.bsModalRef.content.match_id = this.match._id;
 }
 
-  matchrequest2() {
+  matchRequest() {
 
     this.bsModalRef = this.modalService.show(PopupSendComponent);
+    this.bsModalRef.content.sender = this.auth.currentUser.username;
+    this.bsModalRef.content.receiver = this.match.writer;
+    this.bsModalRef.content.matchid = this.match._id;
+    setTimeout(
+      () => {
+        console.log("기다리기");
+      },
+      1000);
+
     //modalRef.componentInstance.setMessage(sender, receiver, match_id);
-    this.bsModalRef.content.onClose.subscribe(result => {
-      console.log('results', result);
-  });
    
   }
 

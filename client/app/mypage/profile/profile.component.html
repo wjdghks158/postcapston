@@ -1,233 +1,386 @@
-<header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>My Page</h1>
-            <span class="subheading">MyPage..</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  
-  <!-- <app-loading [condition]="isLoading"></app-loading> -->
-  <app-toast [message]="toast.message"></app-toast>
-  
-  <div id="wrapper" class="toggled">
-  
-          <!-- Sidebar -->
-          <div id="sidebar-wrapper">
-                  <app-sidebar></app-sidebar>
-          </div>
-          <!-- /#sidebar-wrapper -->
-  
-          <!-- Page Content -->
-          <div id="page-content-wrapper">
-                  <div class="container-fluid">
-                          
-                          <div class="col-lg-8 col-md-10  center-block">
-                                  <div class="card">
-                                      <div class="header">
-                                          <h4 class="title">Profile</h4>
-                                      </div>
-                                      <div class="content">
-                                          <form #profileForm="ngForm" >
-                                              <div class="row">
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>이름</label>
-                                                          <input type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="홍길동" required autofocus>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-8">
-                                                      <div class="form-group">
-                                                          <label for="exampleInputEmail1">이메일</label>
-                                                          <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="xxx@xxx.com" required>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              
-                                          
-                                              <div class="row">
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>나이</label>
-                                                          <input type="number" name="age" [(ngModel)]="user.age" class="form-control" placeholder="20">
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>직업</label>
-                                                          <input type="text" name="job" [(ngModel)]="user.job" class="form-control" placeholder="대학생">
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>거주지</label>
-                                                          <input type="text" name="location" [(ngModel)]="user.location" class="form-control" placeholder="서울">
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <hr>
-                                              <div class="row">
-                                                  <div class="col-md-7">
-                                                      <label>핸드폰</label>
-                                                      <input type="text" name="phone" [(ngModel)]="user.phone" class="form-control" placeholder="-빼고 입력하세요">
-                                                  </div>
-                                                  <div class="col-md-5">
-                                                      <label>KakaoID</label>    
-                                                      <input type="text" name="kakaoid" [(ngModel)]="user.kakaoid" class="form-control" placeholder="kakaoid">
-                                                  </div>
-                                              </div>
-  
-                                              <div class="row">
-                                                  <div class="col-md-6">
-                                                      <div class="form-group">
-                                                          <label>관심분야</label>
-                                                          <input type="text" name="interest" [(ngModel)]="user.interest" class="form-control" placeholder="IT" >
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-6">
-                                                      <div class="form-group">
-                                                          <label>자격증</label>
-                                                          <input type="text" name="skill" [(ngModel)]="user.skill" class="form-control" placeholder="운전면허">
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                  
-                                              <div class="row">
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>학력</label>
-                                                          <br>
-                                                          <!-- <input type="text" name="education" [(ngModel)]="user.education" class="form-control" placeholder="대졸" >
-                                                           -->
-                                                            <div class="col-xs-12 col-12 col-sm-6 mb-3">
-                                                              <div class="btn-group" dropdown>
-                                                                <button id="button-autoclose1" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                                                                        aria-controls="dropdown-autoclose1">
-                                                                  Button dropdown <span class="caret"></span>
-                                                                </button>
-                                                                <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu"
-                                                                    role="menu" aria-labelledby="button-autoclose1">
-                                                                  <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-                                                                  <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-                                                                  <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-                                                                </ul>
-                                                              </div>
-                                                            </div>
 
-                                                          <div ngxDropdown class="d-inline-block dropdown">
-                                                              <a class="nav-link" id="dropdownBasic1" ngxDropdownToggle *ngIf="user.education == '';else otherEducation" >학력</a>
-                                                              <ng-template #otherEducation><a class="nav-link" id="dropdownBasic1" ngxDropdownToggle> {{user.education}} </a></ng-template>
-                                                              <div ngxDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
-                                                                  <a class="dropdown-item" (click)="selectEducation(user, '중졸')">중졸</a>
-                                                                  <a class="dropdown-item" (click)="selectEducation(user, '고졸')">고졸</a>
-                                                                  <a class="dropdown-item" (click)="selectEducation(user, '대재')">대재</a>
-                                                                  <a class="dropdown-item" (click)="selectEducation(user, '대졸')">대졸</a>
-                                                              </div>
-                                                          </div>
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>학과</label>
-                                                          <br>
-                                                          <!-- <input type="text" name="major" [(ngModel)]="user.major" class="form-control" placeholder="컴공"> -->
-                                                          <div ngbDropdown class="d-inline-block dropdown">
-                                                              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle *ngIf="user.majorGroup == '';else otherGroup" >학과</a>
-                                                              <ng-template #otherGroup><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle> {{user.majorGroup}} </a></ng-template>
-                                                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
-                                                                  <a class="dropdown-item" (click)="selectMajorGroup(user, '공대')">공대</a>
-                                                                  <a class="dropdown-item" (click)="selectMajorGroup(user, '예대')">예대</a>
-                                                                  <a class="dropdown-item" (click)="selectMajorGroup(user, '사과대')">사회과학대</a>
-                                                                  <a class="dropdown-item" (click)="selectMajorGroup(user, '인문대')">인문대</a>
-                                                              </div>
-                                                          </div>
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-4">
-                                                      <div class="form-group">
-                                                          <label>전공</label>
-                                                          <br>
-                                                          <label *ngIf="user.majorGroup == ''">학과를 입력하세요.</label>
-                                                          <!-- <input type="text" name="major" [(ngModel)]="user.major" class="form-control" placeholder="컴공"> -->
-                                                          <div ngbDropdown class="d-inline-block dropdown" *ngIf="user.majorGroup=='공대'">
-                                                              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle *ngIf="user.major == '';else otherMajor" >학력</a>
-                                                              <ng-template #otherMajor><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle> {{user.major}} </a></ng-template>
-                                                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '컴공')">컴퓨터공학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '전자정보')">전자정보공학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, 'IT응용')">IT응용시스템학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '산경')">산업경영공학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '기계시스템')">기계시스템공학과</a>
-                                                              </div>
-                                                          </div>
-                                                          <div ngbDropdown class="d-inline-block dropdown" *ngIf="user.majorGroup=='예대'">
-                                                              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle *ngIf="user.major == '';else otherMajor" >학력</a>
-                                                              <ng-template #otherMajor><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle> {{user.major}} </a></ng-template>
-                                                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '회화')">회화과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '시각영상')">시각영상전공</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '인테리어')">인테리어전공</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '패션')">패션학부</a>
-                                                              </div>
-                                                          </div>
-                                                          <div ngbDropdown class="d-inline-block dropdown" *ngIf="user.majorGroup=='사과대'">
-                                                              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle *ngIf="user.major == '';else otherMajor" >학력</a>
-                                                              <ng-template #otherMajor><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle> {{user.major}} </a></ng-template>
-                                                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '경영')">경영학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '행정')">행정학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '경제')">경제학과</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '무역')">무역학과</a>
-                                                              </div>
-                                                          </div>
-                                                          <div ngbDropdown class="d-inline-block dropdown" *ngIf="user.majorGroup=='인문대'">
-                                                              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle *ngIf="user.major == '';else otherMajor" >학력</a>
-                                                              <ng-template #otherMajor><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle> {{user.major}} </a></ng-template>
-                                                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '한국어')">한국어문학부</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '영문')">영문학부</a>
-                                                                  <a class="dropdown-item" (click)="selectMajor(user, '역사')">역사문화학부</a>
-                                                              </div>
-                                                          </div>
-                                                          
-                                                          <mat-slider min="1" max="5" step="1"></mat-slider>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                  
-                                              <div class="row">
-                                                  <div class="col-md-12">
-                                                      <div class="form-group">
-                                                          <label>자기소개</label>
-                                                          <input type="textarea" name="introduction" [(ngModel)]="user.introduction" class="form-control" placeholder="Introduce yourself">
-                                                      </div>
-                                                  </div>
-                                              </div>
-                  
-                                              <div class="text-center">
-                                                  <button mat-raised-button class="btn btn-info btn-fill btn-wd" [disabled]="!profileForm.form.valid" (click)="save(user)" routerLink="/mypage">Update Profile</button>
-                                              </div>
-                                              <div class="clearfix"></div>
-                                          </form>
-                                      </div>
-                                  </div>
-                              </div>
-                  
-                  </div>
-          </div>
-          
-  </div>
-      
-          
-          
+<app-toast [message]="toast.message"></app-toast>
+
+
+<div>
+    <div class="header">
+        <h4 class="title dark-grey" style="text-align: center">프로필</h4>
+    </div>
+    <div class="content">
+
+
+
+
+        <form #profileForm="ngForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <mat-form-field class="example-form-field">
+                            <input matInput type="text" name="username" [(ngModel)]="user.username" placeholder="Username" required/>
+                            <mat-icon matSuffix>account_circle</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <mat-form-field class="example-form-field">
+                            <input matInput type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required/>
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="header">
+                <h4 class="title dark-grey" style="text-align: center">
+                    <small>선택사항</small>
+                </h4>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <mat-form-field class="example-form-field">
+                            <input matInput type="number" name="age" [(ngModel)]="user.age" placeholder="나이" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <mat-form-field class="example-form-field">
+                            <input matInput type="text" name="job" [(ngModel)]="user.job" placeholder="직업" />
+                            <mat-icon matSuffix>work</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <mat-form-field class="example-form-field">
+                            <input matInput type="text" name="location" [(ngModel)]="user.location" placeholder="거주지" />
+                            <mat-icon matSuffix>home</mat-icon>
+                            <mat-hint align="start">
+                                서울, 부산, etc..
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <mat-form-field class="example-form-field">
+                        <input matInput type="text" name="phone" [(ngModel)]="user.phone" placeholder="01012345678" />
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-hint align="start">
+                            <strong>-빼고 입력하세요</strong>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-5">
+                    <mat-form-field class="example-form-field">
+                        <input matInput type="text" name="kakaoid" [(ngModel)]="user.kakaoid" placeholder="KAKAO ID" />
+                        <mat-icon matSuffix>textsms</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <mat-form-field class="example-form-field">
+                        <input matInput type="text" name="interest" placeholder="관심분야" [(ngModel)]="user.interest" />
+                        <mat-icon matSuffix>edit_location</mat-icon>
+
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+
+                    <mat-form-field class="example-form-field">
+                        <input matInput type="text" placeholder="자격증" name="skill" [(ngModel)]="user.skill" />
+                        <mat-icon matSuffix>layers</mat-icon>
+
+                    </mat-form-field>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field class="example-form-field">
+                        <mat-select placeholder="학력" name="education" [(ngModel)]="user.education">
+                            <mat-option value="중졸" (click)="changeEducation(user.education)">중졸</mat-option>
+                            <mat-option value="고졸" (click)="changeEducation(user.education)">고졸</mat-option>
+                            <mat-option value="대학생" (click)="changeEducation(user.education)">대학생</mat-option>
+                            <mat-option value="대졸" (click)="changeEducation(user.education)">대졸</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <mat-form-field class="example-form-field">                           
+                            <mat-select placeholder="단과대" [disabled]="!(user.education === '대학생') && !(user.education === '대졸')" name="majorGroup" [(ngModel)]="user.majorGroup">
+                                <mat-option value="공대">공대</mat-option>
+                                <mat-option value="예대">예대</mat-option>
+                                <mat-option value="사과대">사회과학대</mat-option>
+                                <mat-option value="인문대">인문대</mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="!user.education">학력을 선택하세요</mat-hint>
+                            <mat-hint *ngIf="(user.education) &&!(user.education === '대학생')&& !(user.education === '대졸')">대학생, 대졸 선택가능</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label *ngIf="!user.majorGroup" style="padding-top: 20px;">
+                            단과대를 선택하세요
+                        </label>
+                        <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='공대'">
+                            <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                <mat-option value="컴공">컴퓨터공학과</mat-option>
+                                <mat-option value="전자정보">전자정보공학과</mat-option>
+                                <mat-option value="IT응용">IT응용시스템학과</mat-option>
+                                <mat-option value="산경">산업경영공학과</mat-option>
+                                <mat-option value="기계시스템">기계시스템공학과</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='예대'">
+                            <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                <mat-option value="회화">회화과</mat-option>
+                                <mat-option value="시각영상">시각영상전공</mat-option>
+                                <mat-option value="인테리어">인테리어전공</mat-option>
+                                <mat-option value="패션">패션학부</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='사과대'">
+                            <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                <mat-option value="경영">경영학과</mat-option>
+                                <mat-option value="행정">행정학과</mat-option>
+                                <mat-option value="경제">경제학과</mat-option>
+                                <mat-option value="무역">무역학과</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='인문대'">
+                            <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                <mat-option value="한국어">한국어문학부</mat-option>
+                                <mat-option value="영문">영문학부</mat-option>
+                                <mat-option value="역사">역사문화학부</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>자기소개</label>
+                        <input type="textarea" name="introduction" [(ngModel)]="user.introduction" class="form-control" placeholder="Introduce yourself">
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button mat-raised-button class="btn btn-info btn-fill btn-wd" [disabled]="!profileForm.form.valid" (click)="save(user)"
+                    routerLink="/mypage">Update Profile</button>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
+
+
+<!-- 
+<div class="container">  
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        <div>
+            <div class="header">
+                <h4 class="title dark-grey" style="text-align: center">프로필</h4>
+            </div>
+            <div class="content">
+
+
+
+
+                <form #profileForm="ngForm">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <mat-form-field class="example-form-field">
+                                    <input matInput type="text" name="username" [(ngModel)]="user.username" placeholder="Username" required/>
+                                    <mat-icon matSuffix>account_circle</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <mat-form-field class="example-form-field">
+                                    <input matInput type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required/>
+                                    <mat-icon matSuffix>email</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="header">
+                        <h4 class="title dark-grey" style="text-align: center">
+                            <small>선택사항</small>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <mat-form-field class="example-form-field">
+                                    <input matInput type="number" name="age" [(ngModel)]="user.age" placeholder="나이" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <mat-form-field class="example-form-field">
+                                    <input matInput type="text" name="job" [(ngModel)]="user.job" placeholder="직업" />
+                                    <mat-icon matSuffix>work</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <mat-form-field class="example-form-field">
+                                    <input matInput type="text" name="location" [(ngModel)]="user.location" placeholder="거주지" />
+                                    <mat-icon matSuffix>home</mat-icon>
+                                    <mat-hint align="start">
+                                        서울, 부산, etc..
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <mat-form-field class="example-form-field">
+                                <input matInput type="text" name="phone" [(ngModel)]="user.phone" placeholder="01012345678" />
+                                <mat-icon matSuffix>phone</mat-icon>
+                                <mat-hint align="start">
+                                    <strong>-빼고 입력하세요</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-form-field class="example-form-field">
+                                <input matInput type="text" name="kakaoid" [(ngModel)]="user.kakaoid" placeholder="KAKAO ID" />
+                                <mat-icon matSuffix>textsms</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <mat-form-field class="example-form-field">
+                                <input matInput type="text" name="interest" placeholder="관심분야" [(ngModel)]="user.interest" />
+                                <mat-icon matSuffix>edit_location</mat-icon>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+
+                            <mat-form-field class="example-form-field">
+                                <input matInput type="text" placeholder="자격증" name="skill" [(ngModel)]="user.skill" />
+                                <mat-icon matSuffix>layers</mat-icon>
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field class="example-form-field">
+                                <mat-select placeholder="학력" name="education" [(ngModel)]="user.education">
+                                    <mat-option value="중졸" (click)="changeEducation(user.education)">중졸</mat-option>
+                                    <mat-option value="고졸" (click)="changeEducation(user.education)">고졸</mat-option>
+                                    <mat-option value="대학생" (click)="changeEducation(user.education)">대학생</mat-option>
+                                    <mat-option value="대졸" (click)="changeEducation(user.education)">대졸</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <mat-form-field class="example-form-field">
+                                    <mat-select placeholder="단과대" [disabled]="!(user.education === '대학생') && !(user.education === '대졸')" name="majorGroup" [(ngModel)]="user.majorGroup">
+                                        <mat-option value="공대">공대</mat-option>
+                                        <mat-option value="예대">예대</mat-option>
+                                        <mat-option value="사과대">사회과학대</mat-option>
+                                        <mat-option value="인문대">인문대</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label *ngIf="!user.majorGroup" style="padding-top: 20px;">
+                                    단과대를 선택하세요
+                                </label>
+                                <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='공대'">
+                                    <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                        <mat-option value="컴공">컴퓨터공학과</mat-option>
+                                        <mat-option value="전자정보">전자정보공학과</mat-option>
+                                        <mat-option value="IT응용">IT응용시스템학과</mat-option>
+                                        <mat-option value="산경">산업경영공학과</mat-option>
+                                        <mat-option value="기계시스템">기계시스템공학과</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='예대'">
+                                    <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                        <mat-option value="회화">회화과</mat-option>
+                                        <mat-option value="시각영상">시각영상전공</mat-option>
+                                        <mat-option value="인테리어">인테리어전공</mat-option>
+                                        <mat-option value="패션">패션학부</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='사과대'">
+                                    <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                        <mat-option value="경영">경영학과</mat-option>
+                                        <mat-option value="행정">행정학과</mat-option>
+                                        <mat-option value="경제">경제학과</mat-option>
+                                        <mat-option value="무역">무역학과</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="example-form-field" *ngIf="user.majorGroup=='인문대'">
+                                    <mat-select placeholder="학과" name="major" [(ngModel)]="user.major">
+                                        <mat-option value="한국어">한국어문학부</mat-option>
+                                        <mat-option value="영문">영문학부</mat-option>
+                                        <mat-option value="역사">역사문화학부</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>자기소개</label>
+                                <input type="textarea" name="introduction" [(ngModel)]="user.introduction" class="form-control" placeholder="Introduce yourself">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-raised-button class="btn btn-info btn-fill btn-wd" [disabled]="!profileForm.form.valid" (click)="save(user)"
+                            routerLink="/mypage">Update Profile</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+-->

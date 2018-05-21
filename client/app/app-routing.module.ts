@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,30 +14,30 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
 
-import { AuthGuardLogin, AuthGuardAdmin } from './shared/services';
-
-
 import { BoardMatchComponent } from './board-match/board-match.component';
 import { BoardRecommendComponent } from './board-recommend/board-recommend.component';
 import { BoardContestComponent } from './board-contest/board-contest.component';
 import { MessagesComponent } from './mypage/messages/messages.component';
+
 import { ShowMatchComponent} from './board-match/show-match/show-match.component'
 import { ShowContestComponent } from './board-contest/show-contest/show-contest.component';
+
 import { AddMatchComponent } from './board-match/add-match/add-match.component'
 import { AddContestComponent } from './board-contest/add-contest/add-contest.component';
+
 import { UpdateMatchComponent } from './board-match/update-match/update-match.component'
 import { UpdateContestComponent } from './board-contest/update-contest/update-contest.component';
 
 
+import { AuthGuardLogin, AuthGuardAdmin } from './shared/services';
+//0406
 import { MypageComponent } from './mypage/mypage.component';
 import { SearchContestComponent } from './board-contest/search-contest/search-contest.component';
 import { PostsComponent } from './mypage/posts/posts.component';
 import { ProfileComponent } from './mypage/profile/profile.component';
 import { SelectContestsComponent } from './mypage/select-contests/select-contests.component';
 import { RegisterOkComponent } from './register-ok/register-ok.component';
-
-import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-recommend.component';
-
+import { ChatboxComponent } from './chatbox/chatbox.component';
 
 const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -52,7 +53,6 @@ const routes: Routes = [
   { path: 'match', component: BoardMatchComponent },
   { path: 'match/:id', component: ShowMatchComponent, data: {inStock: false} },
   { path: 'recommend', component: BoardRecommendComponent },
-  { path: 'rankrecommend', component: RankRecommendComponent},
   { path: 'contest', component: BoardContestComponent },
   { path: 'contest/:id', component: ShowContestComponent, data: {inStock: false} },
   { path: 'search', component: SearchContestComponent },
@@ -68,6 +68,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'selectcontests', component: SelectContestsComponent },
   { path: 'registerok', component: RegisterOkComponent },
+  { path: 'chatbox/:id', component: ChatboxComponent, data: {inStock: false} },
   { path: '**', redirectTo: '/notfound' },
 ];
 

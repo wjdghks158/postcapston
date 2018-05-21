@@ -14,6 +14,10 @@ export class ContestService extends BaseService  {
    }
 
 
+   getLimitContests() : Observable<any> {
+    return this.http.get('/api/contestslimit').map(res => res.json());
+   }
+
 
   addContest(contest): Observable<any> {
     return this.http.post('/api/contest', JSON.stringify(contest), this.options);

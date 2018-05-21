@@ -3,11 +3,15 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from '../services/user.service';
+import { SocketService } from '../services/socket.service';
+import { ChatRoomService } from '../services/chat-room.service';
+
 
 @Injectable()
 export class AuthService {
   loggedIn = false;
   isAdmin = false;
+  
 
   currentUser = { _id: '', username: '', role: '', email: '', age: '', job: '', location: '', phone: '', education: '',
    major: '', majorGroup: '', introduction: '', preference: {department: ''}, pages:[], kakaoid: '' , skill: '' , interest: '' };
@@ -15,12 +19,18 @@ export class AuthService {
 
 
 
-  constructor(private userService: UserService,
+  constructor(private socketService: SocketService,
+    private userService: UserService, private chatRoomService: ChatRoomService,
     private router: Router) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
       this.setCurrentUser(decodedUser);
+    }
+    if(this.loggedIn) {
+      if(!this.socketService.isSocket) {
+        this.socketService.initSocket();
+      }
     }
   }
 
@@ -30,6 +40,14 @@ export class AuthService {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
+        this.socketService.initSocket();
+
+        let username : string;
+        username = this.currentUser.username;
+        this.chatRoomService.getChatRooms(username);
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        console.log(this.currentUser.username);
+        //this.socketService.connect();
         return this.loggedIn;
       }
     );
@@ -39,6 +57,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this.loggedIn = false;
     this.isAdmin = false;
+    this.socketService.disConnect();
     this.currentUser = { _id: '', username: '', role: '', email: '', age: '', job: '', location: '', phone: '', education: '',
     major: '', majorGroup: '', introduction: '', preference: {department: ''}, pages:[], kakaoid: '' , skill: '' , interest: '' };
     this.router.navigate(['/']);

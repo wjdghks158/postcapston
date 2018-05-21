@@ -11,14 +11,13 @@ import { AuthService, AppGlobals } from '../shared/services';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   username = new FormControl('', [Validators.required,
-  Validators.minLength(2),
-  Validators.maxLength(30),
-  Validators.pattern('[a-zA-Z0-9_-\\s]*')]);
+    Validators.minLength(2),
+    Validators.maxLength(30)]);
   email = new FormControl('', [Validators.required,
   Validators.minLength(3),
   Validators.maxLength(100)]);

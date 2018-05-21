@@ -1,0 +1,79 @@
+ 
+<div class="container" style="position: fixed; z-index: 999;">
+
+
+  <div class="row chat-window col-xs-4 col-md-4" id="chat_window_1" style="margin-left:10px;">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading top-bar row"  id="minim_chat_window" style="margin: 0px !important;">
+          <div class="col-md-8 col-xs-8" style="padding-right: 0px !important;">
+              
+            <h3 class="panel-title" style = "color:#6c757d">
+                <i class="material-icons" style="float: left; padding-right: 7px;">
+                    chat
+                </i>
+                {{ chatroom.username }}
+            </h3>
+          </div>
+          <div class="col-md-4 col-xs-4" style="text-align: right;">
+            <!-- <a>
+              <i class="material-icons icon_minim">
+                  minimize
+                </i>
+            </a> -->
+            
+            <a (click)="closeclick()">
+              <i data-id="chat_window_1" class="material-icons icon_close" style="color: black;">
+                  close
+                </i>
+            </a>
+          </div>
+        </div>
+        <div #scrollMe class="panel-body msg_container_base" style="overflow-y: scroll; height: 300px;" [scrollTop]="scrollMe.scrollHeight" >
+          <!-- <div class="row msg_container base_sent">
+            <div class="col-md-10 col-xs-10">
+              <div class="messages msg_sent">
+                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+              </div>
+            </div>
+            <div class="col-md-2 col-xs-2 avatar">
+              <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+            </div>
+          </div>
+          <div class="row msg_container base_receive">
+            <div class="col-md-2 col-xs-2 avatar">
+              <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+            </div>
+            <div class="col-md-10 col-xs-10">
+              <div class="messages msg_receive">
+                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+              </div>
+            </div>
+          </div> -->
+          <mat-list class="chat-list">
+              <mat-list-item *ngFor="let message of chatroom[0].messages" >
+                <h4 mat-line >
+                  <b>{{message.username}}</b>
+                </h4>
+
+                <p mat-line class="chat-notification">
+                  <span> <b>{{message.contents}}</b>  </span>
+                </p>
+              </mat-list-item>
+            </mat-list>
+        </div>
+        <div class="panel-footer">
+          <div class="input-group">
+            <input id="btn-input" name="messageContent" type="text"[(ngModel)]="messageContent" (keyup.enter)="sendMessage(chatRoomService.currentchatroomid, messageContent)" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+            <span class="input-group-btn">
+              <button button mat-raised-button class="btn btn-info btn-fill btn-wd" id="btn-chat" (click)="sendMessage(chatRoomService.currentchatroomid, messageContent)">Send</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

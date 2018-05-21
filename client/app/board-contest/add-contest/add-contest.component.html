@@ -65,7 +65,10 @@
       <mat-form-field>
         <input matInput name="field" formControlName="field" placeholder="field" >
       </mat-form-field>
-      <!--
+      <mat-form-field>
+        <input matInput name="url_img2" formControlName="url_img2" placeholder="이미지url" >
+      </mat-form-field>
+      
       <div ng2FileDrop
       [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
       (fileOver)="fileOverBase($event)"
@@ -73,18 +76,16 @@
       class="well my-drop-zone">
      Drop files here !
  </div>
- !-->
  <br />
- <!--
  <h4>Select Files</h4>
  <input type="file" mat-raised-button name="photos" ng2FileSelect [uploader]="uploader" multiple  /><br/>
-!-->
+
 
 
       <button mat-raised-button color="primary" type="submit" >Register</button>
     </form>
 
-<!--
+
     <table class="table">
       <thead>
       <tr>
@@ -97,7 +98,6 @@
       </tr>
       </tbody>
   </table>
-  !-->
 
 
 

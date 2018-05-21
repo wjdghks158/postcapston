@@ -23,7 +23,7 @@ export class AddContestComponent implements OnInit {
   person = new FormControl('', [Validators.required]);
   field = new FormControl('', [Validators.required]);
   url_img = new FormControl('', [Validators.required]);
-
+  url_img2 = new FormControl('', [Validators.required]);
 
   public uploader:FileUploader = new FileUploader({url: URL});
   public hasBaseDropZoneOver:boolean = false;
@@ -50,8 +50,8 @@ export class AddContestComponent implements OnInit {
       tags: this.tags,
       host: this.host,
       person: this.person,
-      field: this.field
-      
+      field: this.field,
+      url_img2: this.url_img2
       //,url_img: this.url_img
     });
 

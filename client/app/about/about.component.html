@@ -1,56 +1,176 @@
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-  <div class="overlay"></div>
+
+<div class="container" style="max-width: 100% !important;">
+  <div class="col-md-8" style="max-width:100%; height:auto;">
+    <a routerLink='/{{link}}'>
+    <img class="carousel-img" src="../../assets/img/{{background_img}}">
+    <div class="carousel-caption d-none d-md-block">
+      <h1>
+        <b>{{ title }}</b>
+      </h1>
+      <p>
+        <b>{{ subtitle }}</b>
+      </p>
+    </div>
+    </a>
+  </div>
+  <div class="row justify-content-md-center" style="text-align: center; padding-bottom:15px; padding-top:15px; border-bottom:1px grey solid;">
+    <div class="col-md-3 myslide" (mouseenter)="mouseEnter('wood-3182655_1920.jpg', 0)" style="border-right: 1px black solid;">
+      <a class="myslide" routerLink="/contest">
+        공모전 검색
+      </a>
+    </div>
+    <div class="col-md-3 myslide" (mouseenter)="mouseEnter('education-3318158_1920.jpg', 1)" style="border-right: 1px black solid;">
+      <a class="myslide" routerLink="/match">
+        매칭 시스템
+      </a>
+    </div>
+    <div class="col-md-3 myslide" (mouseenter)="mouseEnter('desktop-2325627_1920.jpg', 2)">
+      <a class="myslide" routerLink="/recommend">
+        공모전 추천
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="features-icons bg-light text-center">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h1>공모야</h1>
-          <span class="subheading">사용자에게 적합한 공모전 추천 및 팀원 매칭 웹/앱 어플리케이션
-            </span>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex">
+            <i class="icon-settings m-auto text-primary"></i>
+          </div>
+          <h3>Matching System</h3>
+          <p class="lead mb-0">Matching System will be access to easy to the contest.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex">
+            <i class="icon-eye m-auto text-primary"></i>
+          </div>
+          <h3>Recommend System</h3>
+          <p class="lead mb-0">
+            It's easier to find the right people with the recommendation system.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+          <div class="features-icons-icon d-flex">
+            <i class="icon-bulb m-auto text-primary"></i>
+          </div>
+          <h3>Easy to Approach to Contest</h3>
+          <p class="lead mb-0">
+            You can easily find various competitions.</p>
         </div>
       </div>
     </div>
   </div>
-</header>
-
-<!-- Main Content -->
-
-<section class="features-icons bg-light text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-settings m-auto text-primary"></i>
-            </div>
-            <h3>Matching System</h3>
-            <p class="lead mb-0">Matching System will be access to easy to the contest.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-eye m-auto text-primary"></i>
-            </div>
-            <h3>Recommend System</h3>
-            <p class="lead mb-0">
-              It's easier to find the right people with the recommendation system.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-bulb m-auto text-primary"></i>
-            </div>
-            <h3>Easy to Approach to Contest</h3>
-            <p class="lead mb-0">
-              You can easily find various competitions.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
 
 
 <hr>
+
+<div class="typography-line">
+  <h3>
+    <span class="note" style="padding-left: 100px;">최근 등록된 인기 공모전</span>
+  </h3>
+  <blockquote class="blockquote">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-xs-12  col-sm-6 col-md-2" *ngFor="let contest of contests" >
+          <img *ngIf="contest.url_img != ''" routerLink='/contest/{{contest._id}}' style="height: 273px;" src="../../../{{contest.url_img}}" class="img-thumbnail img-responsive" alt="Rounded Image">
+          <img *ngIf="contest.url_img == ''" routerLink='/contest/{{contest._id}}' style="height: 273px;" src="https://{{contest.url_img2}}" class="img-thumbnail img-responsive" alt="Rounded Image">
+          <div class="panel-footer" routerLink='/contest/{{contest._id}}' style="width: 210px; height: 52px;  overflow: hidden;  text-overflow: ellipsis; " >
+              <small >
+                  {{contest.title}}
+              </small>
+            </div>
+        </div>
+      <div class="col-md-1"></div>
+    </div>
+  </blockquote>
+</div>
+
+<hr>
+
+<div class="typography-line">
+  <h3>
+    <span class="note" style="padding-left: 100px;">TITLE ONE</span>
+  </h3>
+  <blockquote class="blockquote">
+    <p class="mb-0">TITLE TWO</p>
+    <footer class="blockquote-footer">SUB TITLE</footer>
+    <div class="row">
+      <div class="col-xs-12  col-sm-6 col-md-3">
+        <h4 class="images-title">1</h4>
+        <img src="../../assets/img/1.jpg" style="height: 273px;" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <div class="panel-footer">
+          <small>
+            SMALL TITLE
+          </small>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-6 col-md-3">
+        <h4 class="images-title">2</h4>
+        <img src="../../assets/img/2.jpg" style="height: 273px;" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <div class="panel-footer">
+          <small>
+            SMALL TITLE
+          </small>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-6 col-md-3">
+        <h4 class="images-title">3</h4>
+        <img src="../../assets/img/3.jpg" style="height: 273px;" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <div class="panel-footer">
+          <small>
+            SMALL TITLE
+          </small>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-6 col-md-3">
+        <h4 class="images-title">4</h4>
+        <img src="../../assets/img/4.jpg" style="height: 273px;" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <div class="panel-footer">
+          <small>
+            SMALL TITLE
+          </small>
+        </div>
+      </div>
+    </div>
+  </blockquote>
+</div>
+
+<div class="typography-line">
+  <blockquote class="blockquote">
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+
+        <h4 class="images-title" style="text-align: left; height: 25px;">둘중하나 아무거나
+          <button mat-button matSuffix class="pull-right" routerLink="/posts">더보기
+            <mat-icon mat-list-icon>add</mat-icon>
+          </button>
+        </h4>
+
+
+        <img src="../../assets/img/about-bg.jpg" style="height: 273px; width: 100%;" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <div class="panel-footer">
+          <p class="mb-0">Sub TITLE</p>
+          <footer class="blockquote-footer">COMMENT</footer>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <h4 class="images-title">둘중하나 아무거나</h4>
+        <img src="../../assets/img/contact-bg.jpg" style="height: 273px; width: 100%;" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <div class="panel-footer">
+          <p class="mb-0">Sub TITLE</p>
+          <footer class="blockquote-footer">COMMENT</footer>
+        </div>
+      </div>
+    </div>
+  </blockquote>
+</div>
+
+<hr>
+

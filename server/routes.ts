@@ -8,7 +8,8 @@ import RecommendCtrl from './controllers/recommend';
 import ContestCtrl from './controllers/contest';
 import UploadCtrl from './controllers/upload';
 import MessageCtrl from './controllers/message';
-
+import ChatRoomCtrl from './controllers/chatroom';
+import  ChatMessageCtrl from './controllers/chatMessage'
 
 
 import User from './models/user';
@@ -18,6 +19,7 @@ import Contest from './models/contest';
 import Recommend from './models/recommend';
 import Match from './models/match';
 import Message from './models/message';
+import ChatRoom from './models/chatroom';
 
 
 export default function setRoutes(app) {
@@ -32,6 +34,8 @@ export default function setRoutes(app) {
   const contestCtrl = new ContestCtrl();
   
   const messageCtrl = new MessageCtrl();
+  const chatRoomCtrl = new ChatRoomCtrl();
+  
   // Users
   router.route('/login').post(userCtrl.login);
   router.route('/users').get(userCtrl.getAll);
@@ -68,6 +72,8 @@ export default function setRoutes(app) {
     router.route('/match/:id').put(matchCtrl.update);
     router.route('/match/:id').delete(matchCtrl.delete);
     router.route('/searchmatchs').get(matchCtrl.search);
+    router.route('/comment/:id').put(matchCtrl.addComment);
+
     //recommend
     router.route('/recommends').get(recommendCtrl.getAll);
     router.route('/recommends/count').get(recommendCtrl.count);
@@ -78,6 +84,7 @@ export default function setRoutes(app) {
     
     //contest
     router.route('/contests').get(contestCtrl.getAll);
+    router.route('/contestslimit').get(contestCtrl.getLimit);
     router.route('/contests/count').get(contestCtrl.count);
     router.route('/searchcontests').get(contestCtrl.search);
     router.route('/contest').post(contestCtrl.insert);
@@ -93,10 +100,20 @@ export default function setRoutes(app) {
     router.route('/message/:id').get(messageCtrl.getMessages);
     router.route('/message/:id').put(messageCtrl.update);
     router.route('/message/:id').delete(messageCtrl.delete);
+    
+    //chatroom
+    router.route('/chatrooms').get(chatRoomCtrl.getAll);
+    router.route('/chatrooms/count').get(chatRoomCtrl.count);
+    router.route('/chatroom').post(chatRoomCtrl.insert);
+    router.route('/chatroom/:id').get(chatRoomCtrl.getroom);
+    router.route('/chatroom/:id').put(chatRoomCtrl.update);
+    router.route('/chatroom/:id').delete(chatRoomCtrl.delete);
+    router.route('/searchchatrooms').get(chatRoomCtrl.search);
 
+  
 
-
-
+  
+    
 
     //router.route('/upload').post(uploadCtrl.upLoad);
     

@@ -1,20 +1,58 @@
-<ul class="sidebar-nav">
-  <li class="sidebar-brand">
-          <a [class.active]="sideMenu === 'mypage' " (click)="setMenu('mypage')" routerLink="/mypage">
-                  MyPage
-          </a>
-  </li>
-  <li>
-          <a [class.active]="sideMenu === 'profile' " (click)="setMenu('profile')" routerLink="/profile">Profile</a>
-  </li>
-  <li>
-          <a [class.active]="sideMenu === 'posts' " (click)="setMenu('posts')" routerLink="/posts">My Posts</a>
-  </li>
-  <li>
-          <a [class.active]="sideMenu === 'selectcontests' " (click)="setMenu('selectcontests')" routerLink="/selectcontests">Selected Contests</a>
-  </li>
-  <li>
-          <a [class.active]="sideMenu === 'messages' " (click)="setMenu('messages')" routerLink="/messages"><span class="notification hidden-sm hidden-xs" *ngIf="(notRead > 0)">{{notRead}}</span>Messages</a>
-  </li>
-  
-</ul>
+<!-- <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+            <a [class.active]="sideMenu === 'mypage' " (click)="setMenu('mypage')" routerLink="/mypage">
+                    MyPage
+            </a>
+    </li>
+    <li>
+            <a [class.active]="sideMenu === 'profile' " (click)="setMenu('profile')" routerLink="/profile">Profile</a>
+    </li>
+    <li>
+            <a [class.active]="sideMenu === 'posts' " (click)="setMenu('posts')" routerLink="/posts">My Posts</a>
+    </li>
+    <li>
+            <a [class.active]="sideMenu === 'selectcontests' " (click)="setMenu('selectcontests')" routerLink="/selectcontests">Selected Contests</a>
+    </li>
+    <li>
+            <a [class.active]="sideMenu === 'messages' " (click)="setMenu('messages')" routerLink="/messages"><span class="notification hidden-sm hidden-xs" *ngIf="(notRead > 0)">{{notRead}}</span>Messages</a>
+    </li>
+    
+</ul> -->
+
+<div id="side-bar" class="side-bar">
+        <ul>
+            <li class="menu-head">
+                <a class="push_menu" [class.active]="sideMenu === 'mypage'" (click)="setMenu('mypage')" routerLink="/mypage">MYPAGE<i class="material-icons pull-right">
+                                account_circle
+                                </i></a>
+            </li>
+            <div class="menu">
+                <li>
+                    <a (click)="setMenu('profile')" [class.active]="sideMenu === 'profile'"  class="" routerLink="/profile"> 내 정보 <i class="material-icons  pull-right">
+                                fingerprint
+                                </i></a>
+                </li>
+                <li>
+                    <a [class.active]="sideMenu === 'posts'" (click)="setMenu('posts')" class="" routerLink="/posts"> 내가 쓴 글<i class="material-icons pull-right">
+                                folder
+                                </i></a>
+                </li>
+                <li>
+                    <a [class.active]="sideMenu === 'messages'" (click)="setMenu('messages')" routerLink="/messages"> 매칭요청 <i class="material-icons pull-right">
+                                question_answer
+                                </i></a>
+                </li>
+                <li>
+                    <a [class.active]="sideMenu === 'selectcontests'" (click)="setMenu('selectcontests')" routerLink="/selectcontests"> 내가 쓴 댓글 <i class="material-icons pull-right">
+                                create
+                                </i></a>
+                </li>
+                <li>
+                        <a [class.active]="sideMenu === 'selectcontests'" (click)="setMenu('selectcontests')" routerLink="/selectcontests"> 최근 본 공모전 <i class="material-icons pull-right">
+                                list
+                        </i></a>
+                </li>
+            </div>
+            
+        </ul>
+</div>   

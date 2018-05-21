@@ -56,8 +56,7 @@ realinsert = (req, res) => {
 
 //search  
   search = (req, res) => {
-    console.log(req.query);
-    console.log("asdadsasd");
+
     var queryName=Object.keys(req.query)[0];
     var queryValue=Object.values(req.query)[0];
     if (queryName == "title"){
@@ -93,7 +92,7 @@ realinsert = (req, res) => {
       this.model.find({writer : new RegExp(String(queryValue))}, (err, docs) => {
         console.log('writer find 잘 왔당깨!!!');
         if (err) { return console.error(err); }
-        console.log(docs);
+
         res.json(docs);
       });
     }
@@ -125,6 +124,36 @@ realinsert = (req, res) => {
         res.json(docs);
       });
     }
+    else if (queryName == "username") {
+      this.model.find({username : new RegExp(String(queryValue))}, (err, docs) => {
+        console.log('username 잘 왔당깨!!!');
+        if (err) { return console.error(err); }
+        res.json(docs);
+      });
+    }
+    else if (queryName == "comments") {
+      console.log('comments 잘 왔당깨!!!박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환박정환박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환박정환박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환박정환박정환박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환박정환박정환박정환박정환박정환');
+      console.log('comments 잘 왔당깨!!!박정환박정환박정환박정환박정환박정환박정환박정환박정환');
+      console.log(queryValue);
+      this.model.find({comments : { $elemMatch: { "writer": new RegExp(String(queryValue)) } }}, (err, docs) => {
+        console.log('comments 잘 왔당깨!!!');
+        console.log(docs.comments);
+        if (err) { 
+          console.log("에러남");
+          return console.error(err); }
+          console.log("다시 주러 간다");
+        res.json(docs);
+      });
+    }
+
+
 console.log(queryName);
   }
 
@@ -132,6 +161,7 @@ console.log(queryName);
   // Get by id
   get = (req, res) => {
     console.log('get에 잘 왔당깨');
+    console.log(req.params.id);
     this.model.findOne({ _id: req.params.id }, (err, obj) => {
       console.log('get의 findOne 잘 왔당깨');
       obj.hits++;

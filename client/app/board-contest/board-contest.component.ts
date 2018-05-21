@@ -3,6 +3,8 @@ import { ContestService } from '../shared/services/contest.service';
 import { OrderPipe } from 'ngx-order-pipe';
 import { Router } from '@angular/router';
 import { CategoryService } from '../shared/services/category.service';
+
+
 @Component({
   selector: 'app-board-contest',
   templateUrl: './board-contest.component.html',
@@ -14,7 +16,7 @@ export class BoardContestComponent implements OnInit {
   
   isSearched : boolean = false;
   value = '';
-
+  current_page: number = 12;
   //category
   categorys;    //category list
   selectedCategory: string; //search category
@@ -32,6 +34,10 @@ export class BoardContestComponent implements OnInit {
     this.getContests();
     
   }
+  page_more(){
+    this.current_page += 4;
+  }
+  
 
   getContests() {
     this.contestService.getContests().subscribe(
