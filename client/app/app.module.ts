@@ -42,6 +42,7 @@ import { AddMatchComponent } from './board-match/add-match/add-match.component';
 import { AddContestComponent } from './board-contest/add-contest/add-contest.component';
 import { ShowContestComponent } from './board-contest/show-contest/show-contest.component';
 import { UpdateContestComponent } from './board-contest/update-contest/update-contest.component';
+import { RankRecommendComponent} from './board-recommend/rank-recommend/rank-recommend.component'
 
 
 import { FileUploadModule   } from 'ng2-file-upload/ng2-file-upload';
@@ -97,7 +98,8 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     RegisterOkComponent,
     ChatboxComponent,
     PopupMatchrequestComponent,
-    ChatwindowComponent
+    ChatwindowComponent,
+    RankRecommendComponent
     
   ],
   imports: [
