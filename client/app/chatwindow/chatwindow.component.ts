@@ -20,7 +20,7 @@ export class ChatwindowComponent implements OnInit {
   chatroom = [{_id:'', username: [], messagesCount:'', newMessagesCount:'', messages: [] }];
   messageContent: string;
 
-  constructor(private socketService: SocketService, private chatRoomService: ChatRoomService
+  constructor(private socketService: SocketService, public chatRoomService: ChatRoomService
     , private auth: AuthService, public el: ElementRef) { 
     console.log("여기는 chatbox이다.");
     console.log(this.chatRoomService.currentchatroomid);
