@@ -27,9 +27,12 @@
   }
 .myslide{
     color: black;
-    
 }
 .myslide:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+.myslide>a:hover{
     cursor: pointer;
     font-weight: bold;
 }
