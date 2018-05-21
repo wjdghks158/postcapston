@@ -28,6 +28,7 @@
     </div>
  -->
 
+
  <div class="typography-line">
 
   <blockquote class="blockquote" *ngIf="!nonSelect">
@@ -35,7 +36,8 @@
       <div class="col-xs-12  col-sm-6 col-md-3" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'; let i = index"
       style="margin: 7px 0; border-bottom: 1px #dee2e6 solid;">
         <a routerLink="/contest/{{contest._id}}">
-        <img src="http://localhost:3000/{{contest.url_img}}" style="height: 273px; width:200px" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <img *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}" style="height: 273px; width:200px" class="img-thumbnail img-responsive" alt="Rounded Image">
+        <img *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}" style="height: 273px; width:200px" class="img-thumbnail img-responsive" alt="Rounded Image">
         </a>
         <div class="panel-footer">
           <small>

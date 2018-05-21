@@ -31,3 +31,10 @@ a:hover{
 ._blank{
     height: 92px;
 }
+.onmouse>a:hover{
+    font-weight: bold;
+}
+.onmouse:hover{
+    cursor: pointer;
+    background: #69f0bc;
+}

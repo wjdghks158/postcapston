@@ -22,7 +22,7 @@
 </div>
 
 <div class="row categorytable">
-    <div class="col-md-2 col-xs-4" *ngFor="let category of categorys">
+    <div class="col-md-3 onmouse" *ngFor="let category of categorys">
         <a class="aColor" (click)="categorySearch(category.value)"> {{ category.value }} </a>
     </div>
 </div>
@@ -53,7 +53,9 @@
         <img class="card-img-top" *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}">
         <img class="card-img-top" *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}">
       </a>
-
+      <div>
+        <p class="card-text" style="overflow: hidden; height: 60px; padding: 5px;">{{ contest.title }}</p>
+      </div>
       
     </div>
   </div>

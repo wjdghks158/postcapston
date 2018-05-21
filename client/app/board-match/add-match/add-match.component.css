@@ -2,3 +2,8 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.mat-list-item:hover{
+    cursor: pointer;
+    background: #69f0bc;
+}
