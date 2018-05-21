@@ -13,3 +13,4 @@ export * from './message.service';
 export * from './category.service';
 export * from './socket.service';
 export * from './chat-room.service';
+export * from './base.service';
