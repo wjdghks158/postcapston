@@ -2,26 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, CarouselModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { MaterialModule } from './shared/modules';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AttendanceService } from './attendances/attendance.service';
-import { EmployeeService } from './employee/employee.service';
 import {
-  UserService, AuthService,
-  AuthGuardLogin, AuthGuardAdmin,
-  AppGlobals, BaseService,ContestService, MatchService, MessageService,
-  UploadService, RecommendService, CategoryService
+UserService, AuthService,
+  AuthGuardLogin, AuthGuardAdmin,BaseService,
+  AppGlobals, RecommendService, ContestService, MatchService,
+  UploadService, MessageService, CategoryService, SocketService, ChatRoomService
 } from './shared/services';
 
 import { PopupSendComponent } from '../../client/app/shared/popup-send/popup-send.component';
 import { PopupMatchcompleteComponent } from '../../client/app/shared/popup-matchcomplete/popup-matchcomplete.component';
-
+import { PopupMatchrequestComponent } from '../../client/app/shared/popup-matchrequest/popup-matchrequest.component';
 
 
 import { AppComponent } from './app.component';
@@ -35,7 +33,6 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
-
 import { BoardMatchComponent } from './board-match/board-match.component';
 import { BoardContestComponent } from './board-contest/board-contest.component';
 import { BoardRecommendComponent } from './board-recommend/board-recommend.component';
@@ -45,6 +42,7 @@ import { AddMatchComponent } from './board-match/add-match/add-match.component';
 import { AddContestComponent } from './board-contest/add-contest/add-contest.component';
 import { ShowContestComponent } from './board-contest/show-contest/show-contest.component';
 import { UpdateContestComponent } from './board-contest/update-contest/update-contest.component';
+
 
 import { FileUploadModule   } from 'ng2-file-upload/ng2-file-upload';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -60,8 +58,6 @@ import { MessagesComponent } from './mypage/messages/messages.component';
 import { MatSliderModule, MatExpansionModule, MatListModule, MatTabsModule } from '@angular/material';
 import { SidebarComponent } from './mypage/sidebar/sidebar.component';
 import { RegisterOkComponent } from './register-ok/register-ok.component';
-import { RankRecommendComponent } from './board-recommend/rank-recommend/rank-recommend.component';
-import { PopupMatchrequestComponent } from './popup-matchrequest/popup-matchrequest.component';
 import { ChatboxComponent } from './chatbox/chatbox.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 
@@ -99,10 +95,10 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     PopupMatchcompleteComponent,
     SidebarComponent,
     RegisterOkComponent,
-    RankRecommendComponent,
-    PopupMatchrequestComponent,
     ChatboxComponent,
+    PopupMatchrequestComponent,
     ChatwindowComponent
+    
   ],
   imports: [
     FileUploadModule,
@@ -114,45 +110,43 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     JwtModule,
     FormsModule,
     FormsModule,
-    NgxPaginationModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
     OrderModule,
     MatSliderModule,
     MatExpansionModule,
     MatListModule,
     MatTabsModule,
-    BsDropdownModule.forRoot()
+    MatTooltipModule
   ],
   exports: [
     FileUploadModule,
     // Shared Modules
     PopupSendComponent,
-    PopupMatchcompleteComponent
+    PopupMatchcompleteComponent,
+    PopupMatchrequestComponent
   ],
   providers: [// all are singleton
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
-    AttendanceService,
     UserService,
-    EmployeeService,
     AppGlobals,
-    BaseService,
-    ContestService, 
-    MatchService, 
-    MessageService,
-    UploadService, 
     RecommendService,
+    MatchService,
+    ContestService,
+    UploadService,
+    MessageService,
     PopupSendComponent,
     CategoryService,
-    PopupMatchcompleteComponent
-  ],
-  entryComponents: [
-    // ENTRY POINTS
-    PopupSendComponent,
-    PopupMatchcompleteComponent
-],
+    PopupMatchcompleteComponent,
+    SocketService,
+    ChatRoomService,
+    PopupMatchrequestComponent,
+    BaseService],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
