@@ -41,7 +41,7 @@ export class AddMatchComponent implements OnInit {
     private categoryService: CategoryService,
     private userService: UserService,
     private contestService: ContestService,
-    private auth: AuthService) { this.categorys = categoryService.Category; }
+    public auth: AuthService) { this.categorys = categoryService.Category; }
 
   ngOnInit() {
     this.getUser();
