@@ -215,6 +215,20 @@ console.log(chatRooms.length);
         }
       });   
   }
+/*
+  goChatRoom(roomId) {
+    this.sidenavToggle();
+    this.chatRoomService.setCurrentChatRoomId(roomId);
+    //this.router.navigate(['/chatbox/'+roomId]);
+    if (!this.openchat) {
+      console.log("asdasdasdasasdasdasd 채팅방 열었잖아");
+      this.openchat = true;
+    }
+
+  }
+  */
+
+
 
   onSubmit() {
     console.log(this.match);

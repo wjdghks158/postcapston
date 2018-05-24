@@ -39,24 +39,21 @@ total: number;
 
 
   cleanPage() {
-    console.log('첫시작');
-    console.log(this.cleanpages.length);
+
     for (var i = 0; i<this.auth.currentUser.pages.length; i++) {
       var isSearch = false;
       if(!(this.cleanpages.length == 0) ) {
-        console.log("이젠 0이 아니야 ");
-        console.log(this.cleanpages.length);
+
         for( var k =0; k< this.cleanpages.length; k ++) {
           if(this.cleanpages[k].contestid == this.auth.currentUser.pages[i]) {
             isSearch = true;
           }
         }
       }
-      console.log('여기 오잖아.');
+
       if(!isSearch) {
         this.cleanpages.push({contestid: this.auth.currentUser.pages[i]});
-        console.log('푸쉬완료.');
-        console.log(this.cleanpages.length);
+
       }
       
     }
