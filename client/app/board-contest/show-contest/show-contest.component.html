@@ -129,7 +129,7 @@
                           <mat-list role="list">
                               <h3 mat-subheader>비슷한 공모전 리스트</h3>
                               <div *ngFor="let contest of contests; let i = index">
-                                  <mat-list-item role="listitem" class="message" routerLink="/contest/{{contest_.id}}" *ngIf="i<4" style="font-size: 6px;">
+                                  <mat-list-item role="listitem" class="message" routerLink="/contest/{{contest._id}}" *ngIf="i<4" style="font-size: 6px;">
                                       <i class="material-icons" style="font-size: 18px;">
                                           thumb_up
                                       </i>{{ contest.title }}</mat-list-item>
