@@ -11,7 +11,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 export class ChatlistComponent implements OnInit {
   constructor(public auth: AuthService, private appGlobals: AppGlobals, private userService: UserService, private router: Router,
     private activatedRoute: ActivatedRoute, private messageService: MessageService,
-    private chatRoomService: ChatRoomService) { }
+    public chatRoomService: ChatRoomService) { }
 
 
     selected: boolean =  false;
