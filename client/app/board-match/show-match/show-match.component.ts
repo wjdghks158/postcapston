@@ -12,6 +12,9 @@ import {PopupMatchcompleteComponent} from '../../shared/popup-matchcomplete/popu
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-show-match',
@@ -65,25 +68,152 @@ export class ShowMatchComponent implements OnInit {
     console.log('Dropdown state is changed');
   }
 
+  test(): Observable<any> {
+    console.log("김코코");
+    var data = { name : "asd"};
+    return ;
+
+  }
+
+  test2() {
+    this.test().subscribe(
+      () => {
+      console.log("박정환");
+      },
+      error => this.toast.setMessage('email already exists', 'danger')
+    );
+  }
+
+ a(num) {
+   console.log( "a 함수 실행");
+ }
+ b(num) {
+  console.log( "b 함수 실행");
+  return new Promise(function( resoleve, reject){
+    console.log("promise 실험중");
+
+  });
+}
+
+
+
+  test3() {
+    console.log("콜백 test3 실험중");
+    this.b(3);
+
+console.log("숫서파악1");
+    var p1 = new Promise(function(resolve, reject) {
+
+      
+console.log("숫서파악2");
+for(var i=0 ; i<5000000; i++) {
+  if(i> 4000000 && i < 4000003) {
+    console.log("test");
+  }
+}
+  reject("실패야 병신아!");
+
+console.log("숫서파악3");
+      // 또는
+      // reject ("Error!");
+    });
+    
+    p1.then(function(value) {
+
+console.log("숫서파악4");
+      console.log(value); // 성공!
+    }, function(reason) {
+
+console.log("숫서파악5");
+      console.log(reason); // 오류!
+    });
+
+console.log("숫서파악6");
+
+    return this.b(3).then(
+      () =>console.log(" anjduajnduanjdu ")
+
+    );
+    
+  }
+
 
   goChat() {
     this.chatroom.username =[];
     this.chatroom.username.push(this.auth.currentUser.username);
     this.chatroom.username.push(this.match.writer);
     console.log("ㅎㅇ");
+
+    this.chatRoomService.chatRooms = [];
+    this.chatRoomService.getChatRooms(this.auth.currentUser.username).subscribe(
+      data => this.chatRoomService.chatRooms = data,
+      error => console.log(error),
+      () => {
+        console.log(this.chatRoomService.chatRooms);
+        let chatRooms = [];
+        let chatRoom  = {   messages : [], messagesCount : '', newMessagesCount : '', username : [], _id : ''}
+        let isChatUser = false ;
+      
+        for( var i = 0; i<this.chatRoomService.chatRooms.length;i++){
+          chatRoom = this.chatRoomService.chatRooms[i];
+          chatRooms.push(chatRoom);         
+        }
+
+        
+        
+        for( var i =0; i < chatRooms.length; i++) {
+          console.log(chatRooms[i].username.length);
     
-    this.chatRoomService.createRoom(this.chatroom).subscribe(
-      res => {
-        this.router.navigate(['/']);
-        let roominfo = res.json();
-        console.log(roominfo);
-        console.log("chatRoomServicechatRoomServicechatRoomServicechatRoomService");
-        this.chatRoomService.setCurrentChatRoomId(roominfo._id);
-        this.chatRoomService.joinRoom(roominfo._id,this.auth.currentUser.username);
-        this.router.navigate(['/chatbox/'+roominfo._id]);
-      },
-      error => this.toast.setMessage('email already exists', 'danger')
-    );
+          for( var j =0; j < chatRooms[i].username.length; j++) {
+            if(chatRooms[i].username[j] == this.match.writer){
+              console.log("있음");
+              // 있으면 기존꺼 쓰고 
+              isChatUser = true;
+              this.chatRoomService.setCurrentChatRoomId(chatRooms[i]._id);
+              this.chatRoomService.joinRoom(chatRooms[i]._id,this.auth.currentUser.username);
+              this.router.navigate(['/chatbox/'+chatRooms[i]._id]);
+              break;
+            }
+          }
+          if(isChatUser) {
+            break;
+          }
+          else {
+              //방 생성할꺼임
+              this.chatRoomService.createRoom(this.chatroom).subscribe(
+                res => {
+                  this.router.navigate(['/']);
+                  let roominfo = res.json();
+                  console.log(roominfo);
+                  console.log("chatRoomServicechatRoomServicechatRoomServicechatRoomService");
+                  this.chatRoomService.setCurrentChatRoomId(roominfo._id);
+                  this.chatRoomService.joinRoom(roominfo._id,this.auth.currentUser.username);
+                  this.router.navigate(['/chatbox/'+roominfo._id]);
+                },
+                error => this.toast.setMessage('email already exists', 'danger')
+              );
+              break;
+          }
+        }
+console.log("이게 안돌아?");
+console.log(chatRooms.length);
+        if(chatRooms.length == 0) {
+          console.log("이젠 돌겠지...");
+              //방 생성할꺼임
+              this.chatRoomService.createRoom(this.chatroom).subscribe(
+                res => {
+                  this.router.navigate(['/']);
+                  let roominfo = res.json();
+                  console.log(roominfo);
+                  console.log("chatRoomServicechatRoomServicechatRoomServicechatRoomService");
+                  this.chatRoomService.setCurrentChatRoomId(roominfo._id);
+                  this.chatRoomService.joinRoom(roominfo._id,this.auth.currentUser.username);
+                  this.router.navigate(['/chatbox/'+roominfo._id]);
+                },
+                error => this.toast.setMessage('email already exists', 'danger')
+              );
+        }
+      });   
   }
 
   onSubmit() {
@@ -163,11 +293,13 @@ matchComplete() {
     this.bsModalRef.content.sender = this.auth.currentUser.username;
     this.bsModalRef.content.receiver = this.match.writer;
     this.bsModalRef.content.matchid = this.match._id;
-    setTimeout(
+   let mytime =  setTimeout(
       () => {
         console.log("기다리기");
       },
       1000);
+
+      clearTimeout(mytime);
 
     //modalRef.componentInstance.setMessage(sender, receiver, match_id);
    

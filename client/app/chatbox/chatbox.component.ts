@@ -21,7 +21,7 @@ export class ChatboxComponent implements OnInit, AfterViewInit, OnDestroy, OnCha
  // chatroom: {_id:'', username: string[], messagesCount:'', newMessagesCount:'', messages: string[] };
   chatroom = [{_id:'', username: [], messagesCount:'', newMessagesCount:'', messages: [] }];
   messageContent: string;
-  constructor(private socketService: SocketService, public chatRoomService: ChatRoomService
+  constructor(private socketService: SocketService, private chatRoomService: ChatRoomService
     , private auth: AuthService, private router: Router) { 
     console.log("여기는 chatbox이다.");
     console.log(this.chatRoomService.currentchatroomid);

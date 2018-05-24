@@ -1,0 +1,16 @@
+.mat-list-item-content{
+    border-left: 2px black solid;
+    margin-bottom: 5px;
+}
+
+.mat-list-item{
+    margin-bottom: 7px;
+}
+.grey-card{
+    background: #d5d8df;
+    border-radius: 2em;
+}
+
+.select{
+    background: white;
+}

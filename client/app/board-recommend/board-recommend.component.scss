@@ -53,7 +53,28 @@ h5 {
     }
   }
 }
+ 
 
 .mat-tab-labels{
-  justify-content: center;
+  justify-content: center !important;
+}
+.mat-tab-label{
+  font-size:21px;
+  color:black;
+}
+.mat-tab-label-active{
+  font-weight: bold;
+  color : black;
+
+}
+
+.board > div.board-inner{
+  background: #fafafa url("../../assets/img/geometry2.png") !important;
+  background-size: 30% !important;
+  height: 129px;
+}
+
+.masthead{
+  background-repeat: no-repeat;
+  background-size: 100%;
 }

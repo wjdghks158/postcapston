@@ -33,10 +33,10 @@ li a{
 {
     overflow: hidden;
     //background:#74AFAD;
-    background:#2C3E50;
+    background:rgb(106, 175, 245);
     position:absolute;
     height:100%;
-    width:100%;
+    width:180px;
     color:#fff;
     transition: margin-left 0.5s;
 }
@@ -53,13 +53,29 @@ li a{
     font-family: 'Lato', sans-serif;
     padding:20px;
 }
-
+.side-bar ul li.menu-head:hover
+{
+    background: #69f0bc;
+    cursor: pointer;
+}
 
 .side-bar ul li.menu-head a
 {
     color:#fff;
     text-decoration:none;
     height:50px;
+
+    
+}
+.side-bar ul li.menu-head
+{
+    &.active {
+        padding-left:17px;
+        //background:#D9853B;
+        color: black;
+        font-weight: bold;
+        border-left:3px solid #ECECEA;
+    }
 }
 
 
@@ -83,13 +99,16 @@ li a{
 
     &.active {
       padding-left:17px;
-      background:#D9853B;
+      //background:#D9853B;
+      color: black;
+      font-weight: bold;
       border-left:3px solid #ECECEA;
     }
 }
 
 .side-bar ul .menu li  a:hover
 {
+    background: #69f0bc; 
     border-left:3px solid #ECECEA;    
     padding-left:17px;
 }
@@ -97,7 +116,9 @@ li a{
 .side-bar ul .menu li  a.active
 {
     padding-left:17px;
-    background:#D9853B;
+    //background:#D9853B;
+    color: black;
+    font-weight: bold;
     border-left:3px solid #ECECEA;
 }
 

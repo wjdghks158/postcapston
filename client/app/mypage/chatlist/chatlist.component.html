@@ -1,0 +1,22 @@
+<div class="container" style="margin-bottom: 100px;">
+  <div class="row justify-content-md-center">
+    <div class="col-md-5 grey-card">
+      <div style="border-bottom: 1px grey solid;">
+        <h1 class="my-4">채팅리스트</h1>
+      </div>
+      <mat-list role="list">
+        <mat-list-item class="message select"  role="listitem" *ngFor="let chatroom of chatRoomService.chatRooms" (click)="goChatRoom(chatroom._id)">
+          <i class="material-icons" style="margin-right: 8px;">
+            person
+          </i>{{ chatroom.username }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-md-auto">
+
+    </div>
+    <div class="col-md-5">
+      
+    </div>
+  </div>
+</div>

@@ -1,113 +1,113 @@
 <app-loading [condition]="isLoading"></app-loading>
 <div>
 
-        <div class="container-fluid">
-                <mat-tab-group>
-                        <mat-tab label="받은 매칭요청">
-                                <h1 class="my-4">매칭요청
-                                        <small>받은 매칭요청</small>
-                                </h1>
-                                <div class="container">
-                                        <table class="table table-stripted">
-                                                <thead>
-                                                        <tr>
+<div class="container-fluid">
+<mat-tab-group>
+<mat-tab label="받은 매칭요청">
+<h1 class="my-4">매칭요청
+<small>받은 매칭요청</small>
+</h1>
+<div class="container">
+<table class="table table-stripted">
+        <thead>
+                <tr>
 
-                                                                <th [class.active]="order === 'title'" (click)="setOrder('title')" class="mdl-data-table__cell--non-numeric">
-                                                                        제목
-                                                                        <span [hidden]="reverse">▼</span>
-                                                                        <span [hidden]="!reverse">▲</span>
-                                                                </th>
-                                                                <th [class.active]="order === 'writer'" (click)="setOrder('writer')">
-                                                                        작성자
-                                                                        <span [hidden]="reverse">▼</span>
-                                                                        <span [hidden]="!reverse">▲</span>
-                                                                </th>
-                                                                <th [class.active]="order === 'created_at'" (click)="setOrder('created_at')">
-                                                                        날짜
-                                                                        <span [hidden]="reverse">▼</span>
-                                                                        <span [hidden]="!reverse">▲</span>
-                                                                </th>
-                                                                <th>
-
-                                                                </th>
-                                                        </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr (click)="openMessage(message)" class="message" *ngFor="let message of receiveMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: p, id: 'p'};">
-                                                                <td>
-                                                                        <a>{{ message.title }}</a>
-                                                                </td>
-                                                                <td>{{ message.sender }}</td>
-                                                                <td>{{ message.created_at | date:'MM-dd' }}</td>
-                                                                <td>
-                                                                        <mat-icon *ngIf="(message.read_at==null)">chat</mat-icon>
-                                                                </td>
-                                                        </tr>
-                                                </tbody>
-                                        </table>
-
-
-
-                                        <hr>
-
-                                        <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
-
-
-                                </div>
-                        </mat-tab>
-                        <mat-tab label="보낸 매칭요청">
-                                <h1 class="my-4">매칭요청
-                                        <small>보낸 매칭요청</small>
-                                </h1>
-                                <div class="container">
-                                        <table class="table table-stripted">
-                                                <thead>
-                                                        <tr>
-
-                                                                <th [class.active]="order === 'title'" (click)="setOrder('title')" class="mdl-data-table__cell--non-numeric">
-                                                                        제목
-                                                                        <span [hidden]="reverse">▼</span>
-                                                                        <span [hidden]="!reverse">▲</span>
-                                                                </th>
-                                                                <th [class.active]="order === 'writer'" (click)="setOrder('writer')">
-                                                                        작성자
-                                                                        <span [hidden]="reverse">▼</span>
-                                                                        <span [hidden]="!reverse">▲</span>
-                                                                </th>
-                                                                <th [class.active]="order === 'created_at'" (click)="setOrder('created_at')">
-                                                                        날짜
-                                                                        <span [hidden]="reverse">▼</span>
-                                                                        <span [hidden]="!reverse">▲</span>
-                                                                </th>
-                                                                <th>
-
-                                                                </th>
-                                                        </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr (click)="openMessage(message)" class="message" *ngFor="let message of receiveMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: p, id: 'q'};">
-                                                                <td>
-                                                                        <a>{{ message.title }}</a>
-                                                                </td>
-                                                                <td>{{ message.sender }}</td>
-                                                                <td>{{ message.created_at | date:'MM-dd' }}</td>
-                                                                <td>
-                                                                        <mat-icon *ngIf="(message.read_at==null)">chat</mat-icon>
-                                                                </td>
-                                                        </tr>
-                                                </tbody>
-                                        </table>
+                        <th [class.active]="order === 'title'" (click)="setOrder('title')" class="mdl-data-table__cell--non-numeric">
+                                제목
+                                <span [hidden]="reverse">▼</span>
+                                <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'writer'" (click)="setOrder('writer')">
+                                작성자
+                                <span [hidden]="reverse">▼</span>
+                                <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'created_at'" (click)="setOrder('created_at')">
+                                날짜
+                                <span [hidden]="reverse">▼</span>
+                                <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th>
+                                확인
+                        </th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr (click)="openMessage(message)" class="message"  *ngFor="let message of receiveMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: p, id: 'p'};">
+                        <td>
+                                <a>{{ message.title }}</a>
+                        </td>
+                        <td>{{ message.sender }}</td>
+                        <td>{{ message.created_at | date:'MM-dd' }}</td>
+                        <td>
+                                <mat-icon *ngIf="(message.read_at==null)">chat</mat-icon>
+                        </td>
+                </tr>
+        </tbody>
+</table>
 
 
 
-                                        <hr>
+<hr>
 
-                                        <pagination-controls (pageChange)="q = $event" id="q"></pagination-controls>
+<pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
 
 
-                                </div>
-                        </mat-tab>
-                </mat-tab-group>
+</div>
+</mat-tab>
+<mat-tab label="보낸 매칭요청">
+<h1 class="my-4">매칭요청
+<small>보낸 매칭요청</small>
+</h1>
+<div class="container">
+<table class="table table-stripted">
+        <thead>
+                <tr>
 
-        </div>
+                        <th [class.active]="order === 'title'" (click)="setOrder('title')" class="mdl-data-table__cell--non-numeric">
+                                제목
+                                <span [hidden]="reverse">▼</span>
+                                <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'writer'" (click)="setOrder('writer')">
+                                작성자
+                                <span [hidden]="reverse">▼</span>
+                                <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'created_at'" (click)="setOrder('created_at')">
+                                날짜
+                                <span [hidden]="reverse">▼</span>
+                                <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th>
+
+                        </th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr (click)="openMessage(message)" class="message"  *ngFor="let message of receiveMessages | orderBy: order : reverse : 'case-insensitive'| paginate: {itemsPerPage: 5, currentPage: p, id: 'q'};">
+                        <td>
+                                <a>{{ message.title }}</a>
+                        </td>
+                        <td>{{ message.sender }}</td>
+                        <td>{{ message.created_at | date:'MM-dd' }}</td>
+                        <td>
+                                <mat-icon *ngIf="(message.read_at==null)">chat</mat-icon>
+                        </td>
+                </tr>
+        </tbody>
+</table>
+
+
+
+<hr>
+
+<pagination-controls (pageChange)="q = $event" id="q"></pagination-controls>
+
+
+</div>
+</mat-tab>
+</mat-tab-group>
+
+</div>
 </div>

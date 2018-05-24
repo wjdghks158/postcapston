@@ -56,7 +56,7 @@
             <div class="row">
               <button mat-raised-button class="btn btn-info btn-fill btn-wd" *ngIf=" auth.loggedIn && !match.matchstate" (click)="matchRequest()">매칭요청</button>
               <button mat-raised-button class="btn btn-info btn-fill btn-wd" *ngIf="match.writer == auth.currentUser.username" (click)="matchComplete()">매칭선택</button>
-  
+              <button mat-raised-button class="btn btn-info btn-fill btn-wd"  (click)="test3()">테스트</button>
             </div>
           </div>
         </div>

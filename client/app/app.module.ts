@@ -61,6 +61,7 @@ import { SidebarComponent } from './mypage/sidebar/sidebar.component';
 import { RegisterOkComponent } from './register-ok/register-ok.component';
 import { ChatboxComponent } from './chatbox/chatbox.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
+import { ChatlistComponent } from './mypage/chatlist/chatlist.component';
 
 
 
@@ -99,7 +100,8 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     ChatboxComponent,
     PopupMatchrequestComponent,
     ChatwindowComponent,
-    RankRecommendComponent
+    RankRecommendComponent,
+    ChatlistComponent
     
   ],
   imports: [

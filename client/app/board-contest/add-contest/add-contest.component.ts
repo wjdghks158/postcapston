@@ -18,6 +18,8 @@ export class AddContestComponent implements OnInit {
   title = new FormControl('', [Validators.required]);
   contents = new FormControl('', [Validators.required]);
   writer = new FormControl('', [Validators.required]);
+  startline = new FormControl('');
+  deadline = new FormControl('');
   tags = new FormControl('', [Validators.required]);
   host = new FormControl('', [Validators.required]);
   person = new FormControl('', [Validators.required]);
@@ -50,6 +52,8 @@ export class AddContestComponent implements OnInit {
       tags: this.tags,
       host: this.host,
       person: this.person,
+      startline: this.startline,
+      deadline : this.deadline,
       field: this.field,
       url_img2: this.url_img2
       //,url_img: this.url_img

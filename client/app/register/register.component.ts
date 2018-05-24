@@ -16,8 +16,9 @@ import { AuthService, AppGlobals } from '../shared/services';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   username = new FormControl('', [Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(30)]);
+  Validators.minLength(2),
+  Validators.maxLength(30),
+  Validators.pattern('[a-zA-Z0-9_-\\s]*')]);
   email = new FormControl('', [Validators.required,
   Validators.minLength(3),
   Validators.maxLength(100)]);

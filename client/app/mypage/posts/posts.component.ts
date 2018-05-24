@@ -78,7 +78,7 @@ export class PostsComponent implements OnInit {
       () => {
         this.isLoading = false;
         console.log("박박정환박정환박정환박정환박정환박정환박정환박정환박정환박정환박정환박정환정환");
-        console.log(this.comments);
+        console.log(this.comments.comments);
       }
     );
   }
