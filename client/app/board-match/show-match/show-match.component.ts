@@ -302,7 +302,7 @@ matchComplete() {
 }
 
   matchRequest() {
-
+    console.log("matchRequest 박정환 테스트");
     this.bsModalRef = this.modalService.show(PopupSendComponent);
     this.bsModalRef.content.sender = this.auth.currentUser.username;
     this.bsModalRef.content.receiver = this.match.writer;

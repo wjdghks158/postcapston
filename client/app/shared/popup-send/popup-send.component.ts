@@ -41,6 +41,7 @@ export class PopupSendComponent implements OnInit {
 
    ngOnInit() {
  //this.sender = sen.v;
+ console.log("PopupSendComponent ngOnInit 왔다.");
  this.registerForm = this.formBuilder.group({
   receiver: this.receiver,
   sender: this.sender,
