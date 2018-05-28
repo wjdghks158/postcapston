@@ -150,7 +150,12 @@ import { ChatlistComponent } from './mypage/chatlist/chatlist.component';
     SocketService,
     ChatRoomService,
     PopupMatchrequestComponent,
-    BaseService],
+    BaseService],entryComponents: [
+      // ENTRY POINTS
+      PopupSendComponent,
+      PopupMatchcompleteComponent,
+      PopupMatchrequestComponent
+  ],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
