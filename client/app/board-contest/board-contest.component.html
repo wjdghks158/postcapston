@@ -14,43 +14,43 @@
 </header> -->
 <app-loading [condition]="isLoading"></app-loading>
 <div *ngIf="!isLoading">
-<div class="row">
-  <div class="col-lg-12 text-center">
-    <h2 class="section-heading text-uppercase"> 공모전 </h2>
-    <h3 class="section-subheading text-muted"> 찾아보세요 </h3>
-  </div>
-</div>
-
-<div class="row categorytable">
-    <div class="col-md-3 onmouse" *ngFor="let category of categorys">
-        <a class="aColor" (click)="categorySearch(category.value)"> {{ category.value }} </a>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading text-uppercase"> 공모전 </h2>
+      <h3 class="section-subheading text-muted"> 찾아보세요 </h3>
     </div>
-</div>
+  </div>
 
-<mat-form-field class="example-form-field col-md-3">
-    <input matInput type="text" placeholder=" 검색" (keyup.enter)="searchEnter()" [(ngModel)]="value"/>
+  <div class="row categorytable">
+    <div class="col-md-3 onmouse" *ngFor="let category of categorys">
+      <a class="aColor" (click)="categorySearch(category.value)"> {{ category.value }} </a>
+    </div>
+  </div>
+
+  <mat-form-field class="example-form-field col-md-3">
+    <input matInput type="text" placeholder=" 검색" (keyup.enter)="searchEnter()" [(ngModel)]="value" />
     <!-- <button mat-button matSuffix mat-icon-button (click)="searchContests()"> -->
     <button mat-button matSuffix mat-icon-button (click)="searchEnter()">
       <i class="material-icons">search</i>
     </button>
-</mat-form-field>
+  </mat-form-field>
 
-<mat-form-field class="example-form-field pull-right col-md-2">
-  <mat-select placeholder="정렬" [(value)]="order">
-    <mat-option value="title">가나다</mat-option>
-    <mat-option value="deadline">남은기간</mat-option>
-    <mat-option value="hits">조회수</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field class="example-form-field pull-right col-md-2">
+    <mat-select placeholder="정렬" [(value)]="order">
+      <mat-option value="title">가나다</mat-option>
+      <mat-option value="deadline">남은기간</mat-option>
+      <mat-option value="hits">조회수</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<hr>
 
-<div class="row" >  
+
+  <!-- <div class="row" >  
   <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'; let idx = index">
     <div class="card h-100" *ngIf="current_page > idx">
 
       <a routerLink='/contest/{{contest._id}}'>
-        <img class="card-img-top" *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}">
+        <img class="card-img-top" *ngIf="contest.url_img != ''" src="http://localhost:3000/{{contest.url_img}}">
         <img class="card-img-top" *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}">
       </a>
       <div>
@@ -62,17 +62,52 @@
 </div>
 <div class="col-md-12">
   <button class="btn btn-default button-width" (click)="page_more()" >+ 더보기</button>
-</div>
+</div> -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mt-5" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'; let idx = index">
+        <div class="card text-center" *ngIf="current_page > idx" routerLink='/contest/{{contest._id}}'>
+          <img class="card-img-top" *ngIf="contest.url_img != ''" src="http://localhost:3000/{{contest.url_img}}" alt="Card image cap">
+          <img class="card-img-top" *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}" alt="Card image cap">
+          <div class="card-body" id="card">
+            <h5 class="card-title textover">{{ contest.title }}</h5>
+            <hr>
+          </div>
+          
+          <div class="card-footer text-muted">
+            <div class="row">
+              <div class="col">
+                
+                  <i class="material-icons">
+                    search
+                    </i>조회수 {{ contest.hits }}
+                
+              </div>
+              <div class="col">
+                
+                  <i class="material-icons">
+                    timer
+                    </i> ~ {{ contest.startline | date:'MM/dd' }}
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-default button-width" (click)="page_more()" >+ 더보기</button>
+    </div>
+  </div>
 
 
 
 
 
-<hr>
+  <a class="btn btn-default" routerLink="/addcontest">글쓰기</a>
 
-<a class="btn btn-default" routerLink="/addcontest">글쓰기</a>
-
-<a class="btn btn-default" routerLink="/updatecontest">업로드테스트용</a>
-<input class="ui button" type="button" value="매칭요청하기" name=""  (click)="searchContests()" />
+  <a class="btn btn-default" routerLink="/updatecontest">업로드테스트용</a>
+  <input class="ui button" type="button" value="매칭요청하기" name="" (click)="searchContests()" />
 
 </div>

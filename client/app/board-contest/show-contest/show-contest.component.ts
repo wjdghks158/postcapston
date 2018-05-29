@@ -157,5 +157,17 @@ export class ShowContestComponent implements OnInit {
     );
   }
 
+  reLoadPage(value){
+    console.log(value);
+    this.id = value;
+    this.getContest(this.id);
+    this.getMatchs(this.id);
+    this.categorySearch();
+    this.userpages._id = this.auth.currentUser._id;
+    this.userpages.contestid = this.id;
+    this.addUserPages(this.userpages); //줘야할 변수는 contestID 값이랑 auth id 값
+  }
+  
+
 
 }
