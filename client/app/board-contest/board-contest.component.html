@@ -64,11 +64,12 @@
   <button class="btn btn-default button-width" (click)="page_more()" >+ 더보기</button>
 </div> -->
 
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 mt-5" *ngFor="let contest of contests | orderBy: order : reverse : 'case-insensitive'; let idx = index">
         <div class="card text-center" *ngIf="current_page > idx" routerLink='/contest/{{contest._id}}'>
-          <img class="card-img-top" *ngIf="contest.url_img != ''" src="http://localhost:3000/{{contest.url_img}}" alt="Card image cap">
+          <img class="card-img-top" *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}" alt="Card image cap">
           <img class="card-img-top" *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}" alt="Card image cap">
           <div class="card-body" id="card">
             <h5 class="card-title textover">{{ contest.title }}</h5>

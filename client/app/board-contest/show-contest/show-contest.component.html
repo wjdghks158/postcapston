@@ -70,12 +70,13 @@
                 <h4><a href="#">5 of Bali’s Spanking New Haunts - WanderLuxe Magazine</a></h4>
                 <p>Naturally, we know where Bali's newest restaurants are and what to order, so give that private chef a rest and check out these spanking new haunts.</p>
             </div>  -->
-
+        
 
                         <div class="well well-sm">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4">
-                                    <img src="http://localhost:3000/{{contest.url_img}}" alt="" class="img-rounded img-responsive" />
+                                    <img *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}"  alt="" class="img-rounded img-responsive" />
+                                    <img *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}"   alt="" class="img-rounded img-responsive" />
                                 </div>
                                 <div class="col-sm-6 col-md-8">
                                     <h4>
