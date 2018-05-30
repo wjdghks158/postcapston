@@ -264,7 +264,7 @@ export class BoardRecommendComponent implements OnInit {
               }
               for( var k=0; k<this.g_keyward.length; k++) {
                 if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
-                  score += 0.5;
+                  score += 2.5;
                 }
               }
             }
@@ -289,7 +289,7 @@ export class BoardRecommendComponent implements OnInit {
               }
             for( var k=0; k<this.y_keyward.length; k++) {
               if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {
-                score += 0.5;
+                score += 2.5;
               }
             }
           }
@@ -318,7 +318,7 @@ export class BoardRecommendComponent implements OnInit {
             }
             for( var k=0; k<this.g_keyward.length; k++) {
               if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
-                score += 0.5;
+                score += 2.5;
               }
             }
           }
@@ -348,7 +348,7 @@ export class BoardRecommendComponent implements OnInit {
            
             for( var k=0; k<this.g_keyward.length; k++) {
               if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
-                score += 0.5;
+                score += 2.5;
               }
             }
           }
@@ -369,7 +369,7 @@ export class BoardRecommendComponent implements OnInit {
             }
           }
           **/
-          if(score >= 3) {
+          if(score >= 4.5) {
             this.recommendMatchs.push({matchid: this.matchs[i]._id, score: score});
           }
         }
