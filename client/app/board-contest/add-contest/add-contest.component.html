@@ -51,11 +51,9 @@
           <textarea matInput name="contents" formControlName="contents" placeholder="내용" rows="10" cols="80"></textarea>
         </mat-form-field>
 
+   
         <mat-form-field>
-          <input matInput name="writer" formControlName="writer" placeholder="Writer">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select value="selected" formControlName="tags" placeholder="tags">
+          <mat-select value="selected" formControlName="tags" placeholder="분류">
           <mat-option>None</mat-option>
           <mat-option value="All">All</mat-option>
           <mat-option value="디자인">디자인</mat-option>
@@ -73,17 +71,17 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker1" placeholder="Choose a start date">
+          <input matInput [matDatepicker]="picker1" placeholder="시작기한">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker2" placeholder="Choose a finish date" name="deadline" formControlName="deadline">
+          <input matInput [matDatepicker]="picker2" placeholder="마감기한" name="deadline" formControlName="deadline">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input matInput name="host" formControlName="host" placeholder="host">
+          <input matInput name="host" formControlName="host" placeholder="주최기관">
         </mat-form-field>
         <mat-form-field>
           <input matInput name="person" formControlName="person" placeholder="person">
@@ -93,6 +91,9 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput name="url_img2" formControlName="url_img2" placeholder="이미지url">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="pageurl" formControlName="pageurl" placeholder="주최홈페이지url">
         </mat-form-field>
 
         <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader"

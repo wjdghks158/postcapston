@@ -98,10 +98,13 @@ export class BoardRecommendComponent implements OnInit {
   
     
     getContest() {
+      console.log("getContestgetContestgetContestgetContestgetContestgetContest")
+      console.log(this.recommendContests);
       var sortingField = "hits";
       this.recommendContests.sort(function(a, b) { // 내림차순
         return b[sortingField] - a[sortingField];
     });
+    console.log(this.recommendContests);
     if(this.recommendContests.length <5) {
       for (var i=0; i<this.recommendContests.length; i++) {
         this.contestService.getContest(this.recommendContests[i].contestid).subscribe(
@@ -182,7 +185,7 @@ export class BoardRecommendComponent implements OnInit {
         
         if(this.auth.currentUser._id  != this.users[i]._id){
          
-          if(this.auth.currentUser.major  == this.users[i].major) { //이 조건 까지 부합해야 시작 할 수 있음
+          if(this.auth.currentUser.majorGroup  == this.users[i].majorGroup) { //이 조건 까지 부합해야 시작 할 수 있음
             //page 갯수가 5개 이상이면 5개만 5개 미만이면 내식 대로
             if(this.users[i].pages.length>= 5) {
   
@@ -199,6 +202,9 @@ export class BoardRecommendComponent implements OnInit {
                 }
                 //flag가 false 라면 기존에 없던 contestid이므로 직접 추가한다.
                 if(!flag) {
+                  if(this.auth.currentUser.major  == this.users[i].major) { //
+                    this.recommendContests.push({contestid: contestid, hits: 4});
+                  }
                   this.recommendContests.push({contestid: contestid, hits: 1});
                 }
                }
@@ -214,6 +220,9 @@ export class BoardRecommendComponent implements OnInit {
                 }
                 //flag가 false 라면 기존에 없던 contestid이므로 직접 추가한다.
                 if(!flag) {
+                  if(this.auth.currentUser.major  == this.users[i].major) { //
+                    this.recommendContests.push({contestid: contestid, hits: 4});
+                  }
                   this.recommendContests.push({contestid: contestid, hits: 1});
                 }
               }
@@ -237,12 +246,12 @@ export class BoardRecommendComponent implements OnInit {
           //우선 match 의 tags 값이 유저의 majorGroup 값 비교 해서 점수 준다.
           //그다음 내용 컨텐츠 조사 해서 찾아서 비교하다.
   
-  
-  
+
           if(String(this.auth.currentUser.majorGroup).indexOf("공대") > -1) {
   
             score += 1;
-            if ( String(this.matchs[i].tags[0]).indexOf("공학") > -1 ) {
+            if ( String(this.matchs[i].tags[0]).indexOf("공학") > -1 &&
+            String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
               console.log("들어오냐");
               score += 1;
               for( var k=0; k<this.g_keyward.length; k++) {
@@ -252,13 +261,16 @@ export class BoardRecommendComponent implements OnInit {
               }
             }
           }
-          
-  
   
           if(String(this.auth.currentUser.majorGroup).indexOf("예대") > -1 ) {
   
             score += 1;
-            if ( String(this.matchs[i].tags[0]).indexOf("디자인") > -1  ) {
+            if ( String(this.matchs[i].tags[0]).indexOf("디자인") > -1 &&
+            String(this.matchs[i].tags[0]).indexOf("기획") > -1 &&
+            String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 &&
+            String(this.matchs[i].tags[0]).indexOf("광고") > -1  &&
+            String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 &&
+            String(this.matchs[i].tags[0]).indexOf("All") > -1   ) {
   
             score += 1;
             for( var k=0; k<this.y_keyward.length; k++) {
@@ -267,41 +279,56 @@ export class BoardRecommendComponent implements OnInit {
               }
             }
           }
-          else if ( String(this.matchs[i].tags[0]).indexOf("기획") > -1 ) {
+
+        }
+
+        if(String(this.auth.currentUser.majorGroup).indexOf("사회과학대") > -1) {
   
+          score += 1;
+          if ( String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("영상") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("문학") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("광고") > -1  &&
+          String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("캐릭터") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("슬로건") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("논문") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("전시") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
+            console.log("들어오냐");
             score += 1;
-            for( var k=0; k<this.y_keyward.length; k++) {
-              if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1) {
-                score += 0.5;
-              }
-            }
-          }
-          else if ( String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 ) {
-  
-            score += 1;
-            for( var k=0; k<this.y_keyward.length; k++) {
-              if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {
-                score += 0.5;
-              }
-            }
-          }
-          else if ( String(this.matchs[i].tags[0]).indexOf("광고") > -1  ) {
-            score += 1;
-            for( var k=0; k<this.y_keyward.length; k++) {
-              if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {
-                score += 0.5;
-              }
-            }
-          }
-          else if ( String(this.matchs[i].tags[0]).indexOf("마케팅") > -1  ) {
-            score += 1;
-            for( var k=0; k<this.y_keyward.length; k++) {
-              if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {
+            for( var k=0; k<this.g_keyward.length; k++) {
+              if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
                 score += 0.5;
               }
             }
           }
         }
+
+
+        if(String(this.auth.currentUser.majorGroup).indexOf("인문대") > -1) {
+  
+          score += 1;
+          if ( String(this.matchs[i].tags[0]).indexOf("기획") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("영상") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("문학") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("광고") > -1  &&
+          String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("캐릭터") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("슬로건") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("논문") > -1 &&
+          String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
+            console.log("들어오냐");
+            score += 1;
+            for( var k=0; k<this.g_keyward.length; k++) {
+              if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
+                score += 0.5;
+              }
+            }
+          }
+        }
+
+
           /** 
           if(this.auth.currentUser.education== this.matchs[i].education || this.auth.currentUser.major== this.matchs[i].major) {
             
