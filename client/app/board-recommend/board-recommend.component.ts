@@ -253,7 +253,7 @@ export class BoardRecommendComponent implements OnInit {
           if(String(this.auth.currentUser.majorGroup).indexOf("공대") > -1) {
   
             score += 1;
-            if ( String(this.matchs[i].tags[0]).indexOf("공학") > -1 &&
+            if ( String(this.matchs[i].tags[0]).indexOf("공학") > -1 ||
             String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
               console.log("들어오냐");
               score += 1;
@@ -264,15 +264,16 @@ export class BoardRecommendComponent implements OnInit {
               }
             }
           }
+
   
           if(String(this.auth.currentUser.majorGroup).indexOf("예대") > -1 ) {
   
             score += 1;
-            if ( String(this.matchs[i].tags[0]).indexOf("디자인") > -1 &&
-            String(this.matchs[i].tags[0]).indexOf("기획") > -1 &&
-            String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 &&
-            String(this.matchs[i].tags[0]).indexOf("광고") > -1  &&
-            String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 &&
+            if ( String(this.matchs[i].tags[0]).indexOf("디자인") > -1 ||
+            String(this.matchs[i].tags[0]).indexOf("기획") > -1 ||
+            String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 ||
+            String(this.matchs[i].tags[0]).indexOf("광고") > -1  ||
+            String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 ||
             String(this.matchs[i].tags[0]).indexOf("All") > -1   ) {
   
             score += 1;
@@ -288,15 +289,15 @@ export class BoardRecommendComponent implements OnInit {
         if(String(this.auth.currentUser.majorGroup).indexOf("사회과학대") > -1) {
   
           score += 1;
-          if ( String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("영상") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("문학") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("광고") > -1  &&
-          String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("캐릭터") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("슬로건") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("논문") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("전시") > -1 &&
+          if ( String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("영상") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("문학") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("광고") > -1  ||
+          String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("캐릭터") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("슬로건") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("논문") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("전시") > -1 ||
           String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
             console.log("들어오냐");
             score += 1;
@@ -312,14 +313,14 @@ export class BoardRecommendComponent implements OnInit {
         if(String(this.auth.currentUser.majorGroup).indexOf("인문대") > -1) {
   
           score += 1;
-          if ( String(this.matchs[i].tags[0]).indexOf("기획") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("영상") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("문학") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("광고") > -1  &&
-          String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("캐릭터") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("슬로건") > -1 &&
-          String(this.matchs[i].tags[0]).indexOf("논문") > -1 &&
+          if ( String(this.matchs[i].tags[0]).indexOf("기획") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("영상") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("문학") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("광고") > -1  ||
+          String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("캐릭터") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("슬로건") > -1 ||
+          String(this.matchs[i].tags[0]).indexOf("논문") > -1 ||
           String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
             console.log("들어오냐");
             score += 1;
