@@ -188,6 +188,7 @@ export class BoardRecommendComponent implements OnInit {
         if(this.auth.currentUser._id  != this.users[i]._id){
          
           if(this.auth.currentUser.majorGroup  == this.users[i].majorGroup) { //이 조건 까지 부합해야 시작 할 수 있음
+            console.log(this.users[i]);
             //page 갯수가 5개 이상이면 5개만 5개 미만이면 내식 대로
             if(this.users[i].pages.length>= 5) {
   
