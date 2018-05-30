@@ -45,6 +45,7 @@ export class BoardContestComponent implements OnInit {
       error => console.log(error),
       () => {
         this.isLoading = false;
+        this.contests.reverse();
         console.log(Object.keys(this.contests).length);
       }
     );
