@@ -292,6 +292,11 @@ export class BoardRecommendComponent implements OnInit {
                 score += 2.5;
               }
             }
+            for( var k=0; k<this.y_keyward.length; k++) {
+              if(String(this.matchs[i].title).indexOf(this.y_keyward[k]) > -1 ) {
+                score += 2.5;
+              }
+            }
           }
 
         }
@@ -369,7 +374,7 @@ export class BoardRecommendComponent implements OnInit {
             }
           }
           **/
-          if(score >= 4.5) {
+          if(score >= 4) {
             this.recommendMatchs.push({matchid: this.matchs[i]._id, score: score});
           }
         }
