@@ -296,7 +296,7 @@ export class BoardRecommendComponent implements OnInit {
 
         }
 
-        if(String(this.auth.currentUser.majorGroup).indexOf("사회과학대") > -1) {
+        if(String(this.auth.currentUser.majorGroup).indexOf("사과대") > -1) {
   
           score += 1;
           if ( String(this.matchs[i].tags[0]).indexOf("아이디어") > -1 ||
