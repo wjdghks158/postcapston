@@ -52,7 +52,7 @@ export class BoardRecommendComponent implements OnInit {
 
 
   g_keyward = ["컴퓨터","공학", "전자","정보", "IT","시스템","산업","기계"];
-  y_keyward = ["인테리어","패션","시각","영상","디자인"];
+  y_keyward = ["인테리어","패션","시각","영상","디자인",];
   s_keyward = ["경영","경제","무역","행정"];
   I_keyward = ["한국어","문학","시나리오","영어","영문","역사","작문","독해"];
   recommendMatchs = [];
@@ -321,11 +321,17 @@ export class BoardRecommendComponent implements OnInit {
             else {
               score += 3;
             }
-            for( var k=0; k<this.g_keyward.length; k++) {
-              if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
+            for( var k=0; k<this.s_keyward.length; k++) {
+              if(String(this.matchs[i].contents).indexOf(this.s_keyward[k]) > -1 ) {
                 score += 2.5;
               }
             }
+            for( var k=0; k<this.s_keyward.length; k++) {
+              if(String(this.matchs[i].title).indexOf(this.s_keyward[k]) > -1 ) {
+                score += 2.5;
+              }
+            }
+
           }
         }
 
@@ -351,11 +357,17 @@ export class BoardRecommendComponent implements OnInit {
             }
             console.log("들어오냐");
            
-            for( var k=0; k<this.g_keyward.length; k++) {
-              if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
+            for( var k=0; k<this.I_keyward.length; k++) {
+              if(String(this.matchs[i].contents).indexOf(this.I_keyward[k]) > -1 ) {
                 score += 2.5;
               }
             }
+            for( var k=0; k<this.I_keyward.length; k++) {
+              if(String(this.matchs[i].title).indexOf(this.I_keyward[k]) > -1 ) {
+                score += 2.5;
+              }
+            }
+
           }
         }
 
