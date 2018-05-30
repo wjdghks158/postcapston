@@ -122,6 +122,8 @@ export class BoardRecommendComponent implements OnInit {
           data => this.contests.push(data),
           error => console.log(error),
           () => {
+            console.log("contest확인");
+            console.log(this.contests);
             this.isLoading = false;
           }
         );
