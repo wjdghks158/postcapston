@@ -256,7 +256,12 @@ export class BoardRecommendComponent implements OnInit {
             if ( String(this.matchs[i].tags[0]).indexOf("공학") > -1 ||
             String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
               console.log("들어오냐");
-              score += 1;
+              if( String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
+                score += 1.5;
+              }
+              else {
+                score += 3;
+              }
               for( var k=0; k<this.g_keyward.length; k++) {
                 if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
                   score += 0.5;
@@ -276,7 +281,12 @@ export class BoardRecommendComponent implements OnInit {
             String(this.matchs[i].tags[0]).indexOf("마케팅") > -1 ||
             String(this.matchs[i].tags[0]).indexOf("All") > -1   ) {
   
-            score += 1;
+              if( String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
+                score += 1.5;
+              }
+              else {
+                score += 3;
+              }
             for( var k=0; k<this.y_keyward.length; k++) {
               if(String(this.matchs[i].contents).indexOf(this.y_keyward[k]) > -1 ) {
                 score += 0.5;
@@ -300,7 +310,12 @@ export class BoardRecommendComponent implements OnInit {
           String(this.matchs[i].tags[0]).indexOf("전시") > -1 ||
           String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
             console.log("들어오냐");
-            score += 1;
+            if( String(this.matchs[i].tags[0]).indexOf("All") > -1 ) {
+              score += 1.5;
+            }
+            else {
+              score += 3;
+            }
             for( var k=0; k<this.g_keyward.length; k++) {
               if(String(this.matchs[i].contents).indexOf(this.g_keyward[k]) > -1 ) {
                 score += 0.5;
@@ -354,7 +369,7 @@ export class BoardRecommendComponent implements OnInit {
             }
           }
           **/
-          if(score >= 3.5) {
+          if(score >= 3) {
             this.recommendMatchs.push({matchid: this.matchs[i]._id, score: score});
           }
         }
