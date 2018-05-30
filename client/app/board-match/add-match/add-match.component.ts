@@ -48,7 +48,7 @@ export class AddMatchComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       title: this.title,
       contents: this.contents,
-      writer: this.writer,
+      writer: this.auth.currentUser.username,
       tags: this.tags,
       contest_id: this.contest_id,
       search_title : this.search_title
