@@ -49,7 +49,9 @@ export class ShowContestComponent implements OnInit {
     url_img: '', // 그림 url
     url_img2: '', // 그림 url
     created_at: '', // 글 생성 시간
-    updated_at: ''  // 글 수정 시간
+    updated_at: '',  // 글 수정 시간,
+    pageurl : '',
+    prize : ''
   };
   isLoading = true;
 
