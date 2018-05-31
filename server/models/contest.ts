@@ -21,6 +21,7 @@ const contestSchema = new mongoose.Schema({
     url_img: {type: String, 'default': ''}, // 그림 url
     url_img2: {type: String, 'default': ''}, // 그림 url
     pageurl: {type: String, 'default': ''}, // pageurl
+    prize  : {type: String, 'default': ''}, //상금
     created_at: {type: Date, index: {unique: false}, 'default': Date.now}, // 글 생성 시간
     updated_at: {type: Date, index: {unique: false}, 'default': Date.now}  // 글 수정 시간
 });

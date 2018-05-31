@@ -19,6 +19,7 @@
   width:100%;
 } */
 .show-detail-icon{
+  padding-top: 18px;
   height: 20%;
   text-align: center;
 }
@@ -30,7 +31,6 @@
 .show-detail-list{
   height: 60%;
   width:100%;
-  overflow: scroll;
 }
 .list-group-item{
   font-size: 10px;
@@ -98,6 +98,12 @@ body
 {
   padding-top: 20px;
   background-color: #fafafa;
+}
+.panel{
+  border-bottom:1px white solid;
+}
+.panel-default{
+  height: 100%;
 }
 .panel > .list-group
 {

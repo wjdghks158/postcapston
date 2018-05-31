@@ -1,242 +1,238 @@
-<!--
-    <div class="row">
+<div class="row">
     <div class="col-md-5">
-        <div style="display: block">
-            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-        </div>
+
     </div>
     <div class="col-md-7">
-        <div>
-            <div style="display: block">
-              <canvas baseChart
-                      [datasets]="barChartData"
-                      [labels]="barChartLabels"
-                      [options]="barChartOptions"
-                      [legend]="barChartLegend"
-                      [chartType]="barChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-            </div>
-          </div>
+
     </div>
 </div>
 
--->
 
 <hr>
+
+
 <mat-tab-group>
-  <mat-tab label="공모전">
-      <header class="masthead" style="background-image: url('assets/img/recommend-bg.jpg')">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-              <div class="page-heading">
-                  <p class="city-lp-header-rating">
-                      <strong>공모전</strong>비슷한 성향의 <strong>사용자</strong>가 가장 많이 찾는 공모전을 추천합니다.
-                      </p>
-                      <h1 data-ats="16">
-                      <strong>적합한 공모전</strong>
-                      </h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
- 
-
-    <hr style = "height : 10px">
-    <div class="container-fluid show-detail" *ngFor="let contest of contests let i = index; " >
-        <div class="row" style="margin:30px 0px;">
-            <div class="col-md-2">
-    
-            </div>
-            <div class="col-md-8">
+    <mat-tab label="공모전">
+        <header class="masthead" style="background-image: url('assets/img/recommend.jpg'); color:white;">
+            <div class="overlay"></div>
+            <div class="container">
                 <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto" style="text-align:center;">
+                        <div class="page-heading">
+                            <p class="city-lp-header-rating">
+                                비슷한 성향의
+                                <strong>사용자</strong>가 가장 많이 찾는 공모전을 추천합니다.
+                            </p>
+                            <h1 data-ats="16">
+                                <strong>적합한 공모전</strong>
+                            </h1>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
+            </div>
+        </header>
 
-                    <div class="col-md-8" style="margin: auto;">
+
+        <hr style="height : 10px">
+        <div class="container-fluid show-detail" *ngFor="let contest of contests let i = index; ">
+            <div class="row" style="margin:30px 0px;">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    <div class="container">
+                        <hr style="border-top: 1px black solid;">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading text-uppercase"> {{ contest.title }} </h2>
+                        </div>
+                        <hr style="border-top: 1px black solid;">
+
+
+
                         <div class="row">
+                                <div class="col-md-8" style="margin: auto;">
 
     
                             <div class="well well-sm">
                                 <div class="row">
-                                    <div class="col-sm-6 col-md-4">
+                                        <div class="col-sm-6 col-md-5" style="margin-top: 40px;">
                                         <a routerLink='/contest/{{contest._id}}'>
                                           <img *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}" alt="" class="img-rounded img-responsive" />
                                         <img *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}" alt="" class="img-rounded img-responsive" />
                                         </a>
-                                        
                                     </div>
-                                    <div class="col-sm-6 col-md-8">
-                                        <a routerLink='/contest/{{contest._id}}'>
-                                        <h4>
-                                            {{ contest.title }}</h4>
-                                          </a>
-                                        <small>
-                                            <cite title="San Francisco, USA">{{ contest.host }}
-                                                <i class="glyphicon glyphicon-map-marker">
-                                                </i>
-                                            </cite>
-                                        </small>
-                                        <p>
+                                    <div class="col-sm-6 col-md-7">
+
+                                            <mat-list role="list">
+                                                <mat-list-item role="listitem" style="font-size: 12px;">
+                                                    주최기관 : {{ contest.host }}
+                                                </mat-list-item>
+                                                <mat-list-item role="listitem" style="font-size: 12px;">
+                                                    홈페이지 :
+                                                    <a href="{{ contest.url }}" target="_blank">{{ contest.url }}</a>
+                                                </mat-list-item>
+                                                <mat-list-item role="listitem" style="font-size: 12px;">
+                                                    팀 구성원 제한 : ~ {{ contest.person }}명
+                                                </mat-list-item>
+                                                <mat-list-item role="listitem" style="font-size: 12px;">
+                                                    1등 혜택 : {{ contest.prize }}
+                                                </mat-list-item>
+                                                <mat-list-item role="listitem" style="font-size: 12px;">
+                                                    <i class="material-icons">
+                                                        date_range
+                                                    </i>기간 : {{ contest.startline | date:'yy-MM-dd' }} ~ {{ contest.deadline
+                                                    | date: 'yy-MM-dd' }}</mat-list-item>
+                                                <mat-list-item role="listitem" style="font-size: 12px;">분야 : {{ contest.tags }}</mat-list-item>
+                                            </mat-list>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="col-md-4 show-detail-col" style="margin: auto;">
+
+                                <div class="show-detail-icon" style="text-align: center;">
+                                    조회수
+                                    <i class="material-icons" style="font-size: 18px;">search</i>
+                                    <span>{{ contest.hits }}</span>
+                                </div>
+                                <div class="show-detail-etc">
+
+                                </div>
+
+                                <hr>
+
+                                <div class="inner" style="width:100%; text-align: center;">
+                                    <div class="show-detail-icon" style="font-size: 13px;">
+                                        비슷한 성향의 가진 유저의 조회수
+
+                                    </div>
+                                    <p class="num">
+
+                                        <button mat-icon-button type="button">
                                             <i class="material-icons">
-                                                home
-                                            </i>홈페이지 :
-                                            <a href="{{ contest.url }}">{{ contest.url }}</a>
-                                            <br />
-                                            <i class="material-icons">
-                                                date_range
-                                            </i>기간 : {{ contest.startline }} ~ {{ contest.deadline }}
-                                            <br /> 분야 : {{ contest.tags }}</p>
-    
-    
+                                                favorite
+                                            </i>
+                                        </button>
+                                        <em id="dev_IntrstNum" style="  color: #ff6600;">{{recommendContests[i].hits}}</em>
+
+                                    </p>
+                                </div>
+
+
+                                <div class="show-detail-list">
+
+                                    <div class="panel panel-default">
+
                                     </div>
                                 </div>
                             </div>
-    
-    
                         </div>
                     </div>
-                    <div class="col-md-4 show-detail-col">
+                </div>
+                <div class="col-md-2">
 
-                        <div class="show-detail-icon">
-                            공모전을 조회한 조회수
+                </div>
+            </div>
+            <hr>
 
-                        </div>
-                        <div class="show-detail-etc">
-                            <i class="material-icons">visibility</i>
-                            <em>{{ contest.hits }}</em>
-                        </div>
 
-                        <hr>
 
-                        <div class="inner" style="width:100%;">
-                            <div class="show-detail-icon">
-                                비슷한 성향의 가진 유저의 조회수
-    
-                            </div>
-                            <p class="num">
-                                
-                                    <button type="button"><img src="http://i.jobkorea.kr/contest/images/icn_hart_3.png?201702170930" alt="관심 공모전 등록" id="IntrstImg"></button> 
-                                    <em id="dev_IntrstNum" style = "  color: #ff6600;" >{{recommendContests[i].hits}}</em>
-    
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </mat-tab>
+
+
+    <mat-tab label="매칭">
+        <header class="masthead" style="background-image: url('assets/img/matching.jpg'); background-position-y:center;">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto" style="text-align:center;">
+                        <div class="page-heading">
+                            <p class="city-lp-header-rating">
+                                유사도가 높은
+                                <strong>사용자</strong>가 가장 많이 찾는 공모전을 추천합니다.
                             </p>
-                        </div>
-
-         
-                        <div class="show-detail-list">
- 
-                            <div class="panel panel-default">
-       
-                            </div>
+                            <h1 data-ats="16">
+                                <strong>적합한 매칭</strong>
+                            </h1>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
-    
-            </div>
+        </header>
+
+        <hr style="height : 10px">
+
+        <div class="container" style="height : 1000px">
+            <table class="table table-stripted">
+                <thead>
+                    <tr>
+                        <th [class.active]="order === 'tags'" (click)="setOrder('tags')" class="mdl-data-table__cell--non-numeric">
+                            태그
+                            <span [hidden]="reverse">▼</span>
+                            <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'title'" (click)="setOrder('title')" class="mdl-data-table__cell--non-numeric">
+                            제목
+                            <span [hidden]="reverse">▼</span>
+                            <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'writer'" (click)="setOrder('writer')">
+                            작성자
+                            <span [hidden]="reverse">▼</span>
+                            <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'created_at'" (click)="setOrder('created_at')">
+                            날짜
+                            <span [hidden]="reverse">▼</span>
+                            <span [hidden]="!reverse">▲</span>
+                        </th>
+                        <th [class.active]="order === 'hits'" (click)="setOrder('hits')">
+                            조회수
+                            <span [hidden]="reverse">▼</span>
+                            <span [hidden]="!reverse">▲</span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody *ngFor="let match of resultmatchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+                    <tr>
+                        <td>{{ match.tags }}</td>
+                        <td>
+                            <a routerLink='/match/{{match._id}}'>{{ match.title }}</a>
+                        </td>
+                        <td>{{ match.writer }}</td>
+                        <td>{{ match.created_at | date:'MM-dd' }}</td>
+                        <td>{{ match.hits }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
         </div>
-        <hr>
-  
-    
-    
-    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</mat-tab>
-
-
-<mat-tab label="매칭">
-    <header class="masthead" style="background-image: url('assets/img/matching.jpg'); background-position-y:center;">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto" style="text-align:center;">
-                    <div class="page-heading">
-                        <p class="city-lp-header-rating">
-                            유사도가 높은
-                            <strong>사용자</strong>가 가장 많이 찾는 공모전을 추천합니다.
-                        </p>
-                        <h1 data-ats="16">
-                            <strong>적합한 매칭</strong>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <hr style="height : 10px">
-
-    <div class="container" style="height : 1000px">
-        <table class="table table-stripted">
-            <thead>
-                <tr>
-                    <th [class.active]="order === 'tags'" (click)="setOrder('tags')" class="mdl-data-table__cell--non-numeric">
-                        태그
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </th>
-                    <th [class.active]="order === 'title'" (click)="setOrder('title')" class="mdl-data-table__cell--non-numeric">
-                        제목
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </th>
-                    <th [class.active]="order === 'writer'" (click)="setOrder('writer')">
-                        작성자
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </th>
-                    <th [class.active]="order === 'created_at'" (click)="setOrder('created_at')">
-                        날짜
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </th>
-                    <th [class.active]="order === 'hits'" (click)="setOrder('hits')">
-                        조회수
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody *ngFor="let match of resultmatchs | orderBy: order : reverse : 'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
-                <tr>
-                    <td>{{ match.tags }}</td>
-                    <td>
-                        <a routerLink='/match/{{match._id}}'>{{ match.title }}</a>
-                    </td>
-                    <td>{{ match.writer }}</td>
-                    <td>{{ match.created_at | date:'MM-dd' }}</td>
-                    <td>{{ match.hits }}</td>
-                </tr>
-            </tbody>
-        </table>
-
-
-
-    </div>
-
-</mat-tab>
+    </mat-tab>
 </mat-tab-group>

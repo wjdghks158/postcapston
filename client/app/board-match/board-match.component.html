@@ -1,5 +1,8 @@
 <app-loading [condition]="isLoading"></app-loading>
 <div *ngIf="!isLoading">
+
+
+
   <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
     <div class="col-lg-12 text-center">
       <h2 class="section-heading text-uppercase"> 공모전 </h2>
@@ -81,4 +84,50 @@
 
   </div>
 
+</div>
+
+<hr>
+
+<div class="container" style="margin-bottom: 50px;">
+    <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase"> 매칭 현황 </h2>
+    </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="row">
+        <div class="col-md-5">
+
+          <form>
+            <h1>내가 올린 매칭글</h1>
+            <div class="tree">
+              <div *ngFor="let mymatch of mymatchs; let idx = index">
+                <div (click)="mymatchclick(mymatch)" *ngIf="!mymatch.matchstate">
+                  <input type="checkbox">
+                  <label>{{ mymatch.title }}</label>
+                </div>
+              </div>
+
+            </div>
+            <input type="reset" routerLink="/addmatch" *ngIf="auth.loggedIn" value="글쓰기">
+          </form>
+        </div>
+        <div class="col-md-2" style="text-align: center; margin: auto;">
+          <i class="material-icons" style="font-size: 50px;">
+            forward
+          </i>
+        </div>
+        <div class="col-md-5">
+          <form>
+            <h1>받은 매칭요청</h1>
+            <div class="tree">
+              <div *ngFor="let message of Messages">
+                <label *ngIf="message.matchid == selectmatch._id" (click)="messageClick(message)">{{ message.title }}</label>
+              </div>
+            </div>
+            <input type="reset" [disabled]="selectmatch._id == ''" (click)="matchComplete()" value="매칭완료하기">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

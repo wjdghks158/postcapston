@@ -27,6 +27,7 @@ export class AddContestComponent implements OnInit {
   url_img = new FormControl('', [Validators.required]);
   url_img2 = new FormControl('', [Validators.required]);
   pageurl = new FormControl('', [Validators.required]);
+  prize = new FormControl('', [Validators.required]);
   public uploader:FileUploader = new FileUploader({url: URL});
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
@@ -56,7 +57,8 @@ export class AddContestComponent implements OnInit {
       deadline : this.deadline,
       field: this.field,
       url_img2: this.url_img2,
-      pageurl : this.pageurl
+      pageurl : this.pageurl,
+      prize : this.prize
       //,url_img: this.url_img
     });
 

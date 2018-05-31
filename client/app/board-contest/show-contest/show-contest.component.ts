@@ -167,7 +167,11 @@ export class ShowContestComponent implements OnInit {
     this.userpages.contestid = this.id;
     this.addUserPages(this.userpages); //줘야할 변수는 contestID 값이랑 auth id 값
   }
-  
+  GoToHomePage(value){
+    console.log(value);
+    window.open(value , "_blank");
+    //window.open(value);
+  }
 
 
 }
