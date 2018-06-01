@@ -23,11 +23,13 @@
     
                             <div class="well well-sm">
                                 <div class="row">
-                                    <div class="col-sm-6 col-md-4">
+       
+                                    <div class="col-sm-6 col-md-6" style="margin-top: 40px;">
                                         <img *ngIf="contest.url_img != ''" src="../../../{{contest.url_img}}"  alt="" class="img-rounded img-responsive" />
                                         <img *ngIf="contest.url_img == ''" src="https://{{contest.url_img2}}"   alt="" class="img-rounded img-responsive" />
                                     </div>
-                                    <div class="col-sm-6 col-md-7">
+    
+                                    <div class="col-sm-6 col-md-6" style="margin: auto;">
     
                                         <mat-list role="list">
                                             <mat-list-item role="listitem" style="font-size: 12px;">
@@ -82,15 +84,22 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <div style="text-align :center;">
+                        <button mat-raised-button class="btn btn-info btn-fill btn-wd" (click)="GoToHomePage(contest.url)">
+                            홈페이지 이동
+                        </button>
+                    </div>
+                    <div>
+                        <div class="header">
+                            <hr style="border-top: 1px black solid;">
+                            <h4 class="title dark-grey" style="text-align: center">공모전 상세내용</h4>
+                            <hr style="border-top: 1px black solid;">
+                        </div>
+                        {{ contest.contents }}
+                        <hr style="border-top: 1px black solid;">
+                    </div>
                 </div>
-                <br>
-                <div style="text-align :center;">
-                    <button mat-raised-button class="btn btn-info btn-fill btn-wd" (click)="GoToHomePage(contest.url)">
-                        홈페이지 이동
-                    </button>
-                </div>
-    
-                <hr style="border-top: 1px black solid;">
     
                 <div>
     
